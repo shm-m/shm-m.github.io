@@ -8,18 +8,11 @@ post_class: post-template
 <!-- Begin Article
 ================================================== -->
 
-	<div class="row">
-		
-
 		<!-- Post -->        
-        {% assign author = site.authors[page.author] %}
-        
-		<div class="col-sm-8">
             <!-- Post Featured Image -->
 			{% if page.image %}<img class="featured-image img-fluid rounded" src="{{ site.baseurl }}/{{ page.image }}" alt="{{ page.title }}">{% endif %}
 			<!-- End Featured Image -->
 			<div class="mainheading">             
-                
                 <!-- Post Categories -->
                 <div class="after-post-tags">
                     <ul class="tags">
@@ -37,8 +30,6 @@ post_class: post-template
 				<h1 class="posttitle">{{ page.title }}</h1> 
                 
 			</div>
-
-			
 
 			<!-- Post Content -->
 			<div class="article-post serif-font">
@@ -74,19 +65,6 @@ post_class: post-template
             <!-- End Prev/Next -->
             
             
-             <!-- Author Box -->
-                {% if page.author %}				
-				<div class="row post-top-meta">
-					<div class="col-md-2">
-						<img class="author-thumb" src="{{site.baseurl}}/{{author.avatar}}" alt="{{ author.display_name }}">
-					</div>
-					<div class="col-md-10">
-						<a target="_blank" class="link-dark" href="{{ author.web }}">{{ author.display_name }}</a><a target="_blank" href="{{ author.twitter }}" class="btn follow">Follow</a>
-						<span class="author-description">{{ author.description }}</span>						
-					</div>
-				</div>				
-                {% endif %}
-            
             
             <!-- Begin Comments
             ================================================== -->
@@ -97,23 +75,6 @@ post_class: post-template
             </section>
             <!--End Comments
             ================================================== -->
-            
-            
-
-		</div>
-		<!-- End Post -->
-
-
-        
-
-		<!-- Sidebar -->
-        <div class="col-sm-4">
-            {% include sidebar.html %}
-            </div>
-        
-        
-
-	</div>
 
 <!-- End Article
 ================================================== -->

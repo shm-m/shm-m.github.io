@@ -30,9 +30,11 @@ p {
 }
 
 section {
-  margin-top: 5rem;
+  margin-top: 6rem;
 }
 
 .introduction {
+  margin-top: 10px;
   font-size: 1rem;
+  list-style: none;
 }

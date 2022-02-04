@@ -3,16 +3,12 @@ topmenu:
   - title: Home
     url: ""
 
-  - title: About
-    url: "about/"
-
-  - title: Contact
-    url: "contact/"
+  - title: Project
+    url: "/about"
 
   - title: Blog
     url: "categories"
-    class: "ml-2 btn btn-dark text-white px-3"
-    external: true
+    class: "ml-2 btn btn-dark text-white px-3 pt-1 pb-2"
 
 # Footer Menu
 footermenu:
