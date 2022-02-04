@@ -4,7 +4,7 @@ topmenu:
     url: ""
 
   - title: Project
-    url: "/about"
+    url: "about/"
 
   - title: Blog
     url: "categories"
