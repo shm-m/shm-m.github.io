@@ -1,11 +1,11 @@
-title: "Affiliates"
-email: wowthemesnet@gmail.com
-timezone: UTC
+title: "Say Hi"
+email: shmm0320@gmail.com
+timezone: UTC+09:00
 baseurl: ""
 permalink: "/:title/"
 logo: "assets/images/logo.png"
 favicon: "assets/images/favicon.ico"
-author: Sal
+author: Sehee Moon
 paginate: 30
 disqus: "demowebsite"
 locale: en_us
