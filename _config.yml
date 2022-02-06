@@ -1,6 +1,6 @@
 title: "Say Hi"
 email: shmm0320@gmail.com
-timezone: UTC+09:00
+timezone: UTC
 baseurl: ""
 permalink: "/:title/"
 logo: "assets/images/logo.png"
