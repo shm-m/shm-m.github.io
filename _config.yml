@@ -6,7 +6,8 @@ permalink: "/:title/"
 logo: "assets/images/logo.png"
 favicon: "assets/images/favicon.ico"
 author: Sehee Moon
-paginate: 30
+paginate: 5
+paginate_path: "/blog/:num/"
 disqus: "demowebsite"
 locale: en_us
 lang: en_us
@@ -24,8 +25,8 @@ ganalytics: UA-113961478-1
 
 # Plugins
 plugins:
-  - jekyll-paginate
   - jekyll-sitemap
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-archives
+  - jekyll-paginate
