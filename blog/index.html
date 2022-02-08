@@ -28,7 +28,7 @@ layout: default
         {% if page == paginator.page %}
           <a class ="current_page">{{ page }}</a>
         {% elsif page == 1 %}
-          <a href="{{ paginator.previous_page_path | relative_url }}">{{ page }}</a>
+          <a href="{{ site.paginate_path | relative_url | replace: ':num', '' }}">{{ page }}</a>
         {% else %}
           <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a>
         {% endif %}
