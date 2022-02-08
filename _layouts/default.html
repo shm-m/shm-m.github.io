@@ -33,6 +33,7 @@ gtag('config', '{{site.ganalytics}}');
 	new WOW().init();
 </script>
 
+
 </head>   
     
 {% capture layout %}{% if page.layout %}layout-{{ page.layout }}{% endif %}{% endcapture %}
@@ -75,6 +76,11 @@ gtag('config', '{{site.ganalytics}}');
     
 <!-- Container
 ================================================== -->    
+<div class style="background-image: ;">
+  {% if page.image %}
+  <img class="featured-image background-image" src="{{ site.baseurl }}/{{ page.image }}" alt="{{ page.title }}">
+  {% endif %}
+</div>
 <main class="container">   
       {{ content }}  
 

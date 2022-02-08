@@ -1,6 +1,6 @@
 <!-- begin post -->
 {% assign author = site.authors[post.author] %}
-<div class="card">
+<div class="card post-box">
     <a href="{{ post.url | absolute_url }}">
         {% if post.image %} <img class="rounded mb-4 post-image" src="{{ site.baseurl }}/{{ post.image }}" alt="{{ post.title }}"> {% endif %}
     </a>
@@ -11,7 +11,7 @@
                  <p class ="post_info"><a href="{{ site.baseurl }}/categories#{{ category | slugify }}">{{ category }}</a></p>
                 {% endfor %}
         </div>
-        <h3 class="card-title serif-font"><a href="{{ post.url | absolute_url }}">{{ post.title }}</a></h3>
+        <h3 class="card-title post-title"><a href="{{ post.url | absolute_url }}">{{ post.title }}</a></h3>
         <p class="card-text" style="font-weight: 400;">{{ post.excerpt | strip_html | truncatewords:15 }}</p>
         <div class="metafooter">
             <div class="wrapfooter small d-flex align-items-center">

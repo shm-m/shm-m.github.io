@@ -39,19 +39,30 @@ section {
   list-style: none;
 }
 
+.background-image {
+  width: 100vw;
+  height: 350px;
+  object-fit: cover;
+}
+
 .post_info {
   color: #6c757d;
   font-size: 1rem;
   font-weight: 500;
 }
 
-.post-image {
-  box-shadow: 2px 2px 20px rgb(184, 177, 167);
+.post-box {
+  line-height: 1.2;
 }
 
-.post-image:hover {
+.post-box:hover .post-image {
+  box-shadow: 2px 2px 40px rgb(184, 177, 167);
   position: relative;
   top: -5px;
+}
+
+.post-box:hover .post-title {
+  color: #649afe;
 }
 
 .pagination {
@@ -65,4 +76,8 @@ section {
 
 .current_page {
   color: black !important;
+}
+
+.post-body {
+  padding: 0 100px;
 }

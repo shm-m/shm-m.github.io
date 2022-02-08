@@ -7,12 +7,9 @@ post_class: post-template
 
 <!-- Begin Article
 ================================================== -->
-
+        <div class ="post-body">
 		<!-- Post -->        
-            <!-- Post Featured Image -->
-			{% if page.image %}<img class="featured-image img-fluid rounded" src="{{ site.baseurl }}/{{ page.image }}" alt="{{ page.title }}">{% endif %}
-			<!-- End Featured Image -->
-			<div class="mainheading">             
+			<div class="mainheading pb-5">             
                 <!-- Post Categories -->
                 <div class="after-post-tags">
                     <ul class="tags">
@@ -27,7 +24,7 @@ post_class: post-template
                 <!-- End Categories -->
                 
                 <!-- Post Title -->
-				<h1 class="posttitle">{{ page.title }}</h1> 
+				<h2 class="posttitle mb-3">{{ page.title }}</h2> 
                 
 			</div>
 
@@ -46,7 +43,7 @@ post_class: post-template
                 {% endif %}
                 </small>
             </p>
-            
+        </div>
 			
             
             <!-- Prev/Next -->
