@@ -1,0 +1,18 @@
+<!-- begin project -->
+<div class="card post-box">
+    <a href="{{ project.url | absolute_url }}">
+        {% if project.image %} <img class="rounded mb-4 post-image" src="{{ site.baseurl }}/{{ project.image }}" alt="{{ project.title }}"> {% endif %}
+    </a>
+    <div class="card-block">
+        <div>
+                {% assign sortedCategories = project.categories | sort %}
+                {% for category in sortedCategories %}
+                 <p class ="post_info"><a href="{{ site.baseurl }}/categories#{{ category | slugify }}">{{ category }}</a></p>
+                {% endfor %}
+        </div>
+        <h3 class="card-title post-title"><a href="{{ project.url | absolute_url }}">{{ project.title }}</a></h3>
+        <class class="card-text" style="font-weight: 400;">{{ project.description }}</class>
+    </p>
+    </div>
+</div>
+<!-- end project -->
