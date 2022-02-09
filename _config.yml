@@ -8,6 +8,10 @@ favicon: "assets/images/favicon.ico"
 author: Sehee Moon
 paginate: 5
 paginate_path: "/blog/:num/"
+collections:
+  projects:
+    output: true
+    permalink: /:collection/:title
 disqus: "demowebsite"
 locale: en_us
 lang: en_us
