@@ -2,7 +2,8 @@
 {% assign author = site.authors[post.author] %}
 <div class="card post-box">
     <a href="{{ post.url | absolute_url }}">
-        {% if post.image %} <img class="rounded mb-4 post-image" src="{{ site.baseurl }}/{{ post.image }}" alt="{{ post.title }}"> {% endif %}
+        {% if post.image %} <img class="rounded mb-4 post-image" sizes="(max-width: 401px) 400px, (max-width: 700px) 7000px,
+        1000px" src="{{ site.baseurl }}/{{ post.image }}" alt="{{ post.title }}"> {% endif %}
     </a>
     <div class="card-block">
         <div>
