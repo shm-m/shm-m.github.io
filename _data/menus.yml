@@ -9,8 +9,6 @@ topmenu:
   - title: Blog
     url: "blog"
 
-  - title: contact
-    url: "contact/"
 # Footer Menu
 footermenu:
   - title: Home
