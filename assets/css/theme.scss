@@ -356,7 +356,7 @@ span.post-read-more a:hover {
   margin-bottom: 1.5rem;
 }
 .article-post {
-  font-size: 1.18em;
+  font-size: 1rem;
   line-height: 1.8;
   font-weight: 400;
   color: rgba(0, 0, 0, 0.8);
@@ -375,6 +375,9 @@ span.post-read-more a:hover {
   img,
   iframe {
     border-radius: 0.25rem !important;
+  }
+  p {
+    text-align: justify;
   }
 }
 
@@ -633,11 +636,17 @@ ul.tags li a:hover {
 .article-post h2,
 .article-post h3,
 .article-post h4,
-.article-post h5,
-.article-post h6 {
+.article-post h5 {
   font-weight: 600;
   font-family: PT Sans;
   margin-top: 3rem;
+}
+.article-post h6 {
+  color: #6c757d;
+  font-weight: 400;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: -10px;
 }
 
 img {
