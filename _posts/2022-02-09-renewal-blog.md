@@ -2,7 +2,7 @@
 layout: post
 title: "블로그 리뉴얼"
 categories: [gitpage]
-image: assets/images/renewer-blog.png
+image: assets/images/renewal-blog.png
 ---
 
 학원 수료 이후, 개발자는 기술 블로그가 필수라는 말에 부랴부랴 블로그를 생성하였다. 플랫폼에는 티스토리, 노션, 벨로그, 깃페이지가 선택지에 있었고, 디자인적인 측면에서는 노션이 가장 마음에 들었으나, 복잡한 url의 형식과 페이지를 개별적으로 생성한다는 점이 불만으로 작용하였다. 벨로그는 디자인이 썩 마음에 들지 않는데 커스터마이징까지 불가능하다는 점에서 탈락,(티스토리는 그냥 끌리지 않았다) 결국 jekyll을 사용한 깃페이지를 활용하기로 했다.
@@ -11,7 +11,7 @@ image: assets/images/renewer-blog.png
 
 <br>
 
-![hydeout]({{ site.baseurl }}/assets/images/posts/renewer-1.png)
+![hydeout]({{ site.baseurl }}/assets/images/posts/renewal-1.png)
 
 ###### [jekyll theme | Hydeout](https://github.com/fongandrew/hydeout)
 
@@ -25,7 +25,7 @@ image: assets/images/renewer-blog.png
 
 <br>
 
-![]({{ site.baseurl }}/assets/images/posts/renewer-2.png)
+![]({{ site.baseurl }}/assets/images/posts/renewal-2.png)
 
 ###### [jekyll theme | Affiliates](https://github.com/wowthemesnet/affiliates-jekyll-theme)
 
@@ -37,7 +37,7 @@ image: assets/images/renewer-blog.png
 
 <br>
 
-![]({{ site.baseurl }}/assets/images/posts/renewer-3.png)
+![]({{ site.baseurl }}/assets/images/posts/renewal-3.png)
 
 ###### 기존의 것과 현재 커스터마이징한 `index.html` 비교
 
