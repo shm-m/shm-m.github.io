@@ -26,6 +26,13 @@ sass:
   style: :compressed
 ganalytics: UA-113961478-1
 
+# Analytics
+analytics:
+  provider: "google-gtag"
+  google:
+    tracking_id: "G-6VQFGYS79F"
+    anonymize_ip: # true, false (default)
+
 # Plugins
 plugins:
   - jekyll-sitemap
