@@ -41,6 +41,8 @@ Barny는 Springboot를 기반으로 한 정기구독형 주류 판매 웹 서비
 
 #### 1. DB모델링
 
+![database_modeling]({{ site.baseurl }}/assets/images/barny//barny-1.png)
+
 ###### 개념적 설계, eXERD
 
 데이터베이스 모델링은 크게 회원, 관리자, 상품, 게시판으로 나눠 필요한 기능들을 기술한 요구사항 분석을 토대로 진행하였습니다.
@@ -61,7 +63,7 @@ Barny는 Springboot를 기반으로 한 정기구독형 주류 판매 웹 서비
 
 6명이서 진행하는 협업이었기에, 각자 프론트 단을 구현할 경우 통일성이 저해될 가능성이 존재했습니다. 따라서 게시판, my page, header, footer와 같은 공통으로 사용될 JSP 페이지 제작을 담당하였습니다.
 
-###### 일반 회원이 로그인 시 보여지는 header
+![chang-nav-bar]({{ site.baseurl }}/assets/images/barny//barny-2.png)
 
 navigation bar의 경우, 스크롤 이동 시 shrink되며 디자인이 변경되도록 js 함수를 사용하여 제작하였습니다.
 
