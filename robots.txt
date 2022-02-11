@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shm-m.github.io/sitemap.xml
