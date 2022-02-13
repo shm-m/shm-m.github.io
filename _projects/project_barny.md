@@ -93,6 +93,7 @@ navigation bar의 경우, 스크롤 이동 시 shrink되며 디자인이 변경�
 
 또한 Spring Security의 기능을 활용하여 사용자가 로그인 시, 권한에 따라 접근할 수 있는 게시판을 달리하였습니다.
 
+![default template]({{ site.baseurl }}/assets/images/barny//barny-3.png)
 기본적인 게시판 양식 및 마이페이지, 관리자 페이지 역시 Bootstrap을 활용하여 제작하였습니다. UI에 통일성을 유지하며 편리성을 강조하고, 다양한 게시판에서 활용 가능하도록 하였습니다.
 
 ---
