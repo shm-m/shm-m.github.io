@@ -2,6 +2,7 @@ title: "Say Hi"
 email: shmm0320@gmail.com
 timezone: UTC
 baseurl: ""
+url: https://shm-m.github.io
 permalink: "/:title/"
 logo: "assets/images/logo.png"
 favicon: "assets/images/favicon.ico"
