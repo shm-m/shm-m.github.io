@@ -7,7 +7,7 @@ permalink: "/:title/"
 logo: "assets/images/logo.png"
 favicon: "assets/images/favicon.ico"
 author: Sehee Moon
-paginate: 5
+paginate: 4
 paginate_path: "/blog/:num/"
 collections:
   projects:
