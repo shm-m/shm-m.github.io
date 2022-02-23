@@ -35,6 +35,8 @@ gtag('config', '{{site.ganalytics}}');
 	new WOW().init();
 </script>
 
+{% include google-analytics.html %}
+
 </head>   
     
 {% capture layout %}{% if page.layout %}layout-{{ page.layout }}{% endif %}{% endcapture %}
@@ -92,7 +94,6 @@ gtag('config', '{{site.ganalytics}}');
 <footer class="footer container text-center">  
   <div class="copyright small">
     Copyright © {{site.title}}. All rights reserved.
-    {% include google-analytics.html %}
   </div>
 </footer>
 
