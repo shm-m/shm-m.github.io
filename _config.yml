@@ -30,7 +30,7 @@ sass:
 analytics:
   provider: "google-gtag"
   google:
-    tracking_id: "G-JT749B63RR"
+    tracking_id: "G-6VQFGYS79F"
     anonymize_ip: # true, false (default)
 
 # Plugins
