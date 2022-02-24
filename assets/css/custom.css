@@ -88,3 +88,12 @@ section {
   border: 1px solid #d9d9d9;
   padding: 20px 10px;
 }
+
+.home-title {
+  font-family: "Pacifico", cursive;
+  font-size: 1.75rem;
+}
+
+.home-title:hover {
+  color: #7e75ff;
+}
