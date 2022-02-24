@@ -13,7 +13,7 @@
                 {% endfor %}
         </div>
         <h3 class="card-title post-title"><a href="{{ post.url | absolute_url }}">{{ post.title }}</a></h3>
-        <p class="card-text" style="font-weight: 400;">{{ post.excerpt | strip_html | truncatewords:15 }}</p>
+        <p class="card-text">{{ post.excerpt | strip_html | truncatewords:15 }}</p>
         <div class="metafooter">
             <div class="wrapfooter small d-flex align-items-center">
                 <span class="author-meta">

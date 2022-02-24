@@ -8,7 +8,6 @@ body {
 
 .skill {
   display: inline-block;
-  font-weight: 400;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
@@ -101,4 +100,12 @@ section {
 
 .home-title:hover {
   color: #7a96fc;
+}
+
+@font-face {
+  font-family: "MinSans-Light";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Light.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
