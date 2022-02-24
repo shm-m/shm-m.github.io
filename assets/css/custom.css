@@ -25,6 +25,11 @@ body {
   padding: 4px 15px;
 }
 
+.special {
+  background-color: #7a96fc;
+  border-color: #7a96fc;
+}
+
 p {
   font-size: 1rem;
 }
@@ -63,7 +68,7 @@ section {
 }
 
 .post-box:hover .post-title {
-  color: #649afe;
+  color: #7a96fc;
 }
 
 .pagination {
@@ -95,5 +100,5 @@ section {
 }
 
 .home-title:hover {
-  color: #7e75ff;
+  color: #7a96fc;
 }
