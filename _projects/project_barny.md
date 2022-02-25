@@ -224,7 +224,7 @@ $("#start_btn").click(function () {
 });
 ```
 
-```sql
+```xml
 <!--이벤트 참여 여부 체크-->
     <select id="checkPart" resultType="String">
         <![CDATA[
