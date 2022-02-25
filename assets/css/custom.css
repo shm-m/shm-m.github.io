@@ -3,9 +3,6 @@ Don't want to use sass and simply modify the stylesheet in the old css fashion?
 Just customize your theme here.
 ================================================== */
 
-body {
-}
-
 .skill {
   display: inline-block;
   text-align: center;
@@ -108,4 +105,15 @@ section {
     format("woff");
   font-weight: normal;
   font-style: normal;
+}
+
+#sequence {
+  font-size: 2rem;
+  line-height: 1.5;
+  margin-left: 10px;
+}
+
+.intro {
+  display: flex;
+  flex-wrap: wrap;
 }
