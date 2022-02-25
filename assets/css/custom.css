@@ -93,9 +93,6 @@ section {
 .home-title {
   font-family: "Pacifico", cursive;
   font-size: 1.75rem;
-}
-
-.home-title:hover {
   color: #7a96fc;
 }
 
