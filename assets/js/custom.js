@@ -2,6 +2,7 @@
 var example = ['🏃‍♀️', '🚶‍♀️'];
 
 textSequence(0);
+
 function textSequence(i) {
 
     if (example.length > i) {

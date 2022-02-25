@@ -114,3 +114,8 @@ section {
   display: flex;
   flex-wrap: wrap;
 }
+
+.active {
+  color: #333;
+  font-weight: 700;
+}

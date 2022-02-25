@@ -1,7 +1,7 @@
 # Top Menu
 topmenu:
   - title: About
-    url: ""
+    url: "about"
 
   - title: Project
     url: "projects"
