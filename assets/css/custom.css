@@ -119,3 +119,9 @@ section {
   color: #333;
   font-weight: 700;
 }
+
+@media (max-width: 768px) {
+  .h1 {
+    font-size: 1rem !important;
+  }
+}
