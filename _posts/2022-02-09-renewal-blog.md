@@ -54,6 +54,7 @@ image: assets/images/renewal-blog.png
 3. `collection`을 활용하여 project 파일 별도로 관리
 4. syntaxhighlighter
 5. 기타(거의 모든..) UI
+6. 활성 메뉴 표시 기능 (2월 26일 추가)
 
 특히 1번과 3번에 난항을 겪었고, 시간이 남는다면 미래의 나를 위해 jekyll 커스터마이징 관련 포스팅을 작성해볼까 한다.
 
