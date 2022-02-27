@@ -23,7 +23,7 @@ Barny는 Springboot를 기반으로 한 정기구독형 주류 판매 웹 서비
 <br>
 <b>진행 인원</b> &nbsp; 6명
 <br>
-<b>깃허브 주소</b> &nbsp; https://github.com/shm-m/project_barny
+<b>깃허브 주소</b> &nbsp; <a href="https://github.com/shm-m/project_barny">https://github.com/shm-m/project_barny</a>
 
 </div>
 
