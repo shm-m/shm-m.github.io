@@ -64,7 +64,7 @@ gtag('config', '{{site.ganalytics}}');
         
 
           <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto font-weight-bold d-flex align-items-center">
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
               {% for item in site.data.menus.topmenu %}
               {% assign class = nil %}
               {% if page.url contains item.url %}
