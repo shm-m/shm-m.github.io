@@ -97,14 +97,6 @@ section {
   color: #7a96fc;
 }
 
-@font-face {
-  font-family: "MinSans-Light";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Light.woff")
-    format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
 #sequence {
   font-size: 2rem;
   line-height: 1.5;
@@ -118,7 +110,7 @@ section {
 
 .active {
   color: #333;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 @media (max-width: 768px) {
