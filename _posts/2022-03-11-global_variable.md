@@ -28,7 +28,7 @@ image: assets/images/global-variable.png
 
 그래서 구글링해보니 다음과 같은 결과가 나옴
 
-![]({{ site.baseurl }}/assets/images/posts/global-variable-1.png)
+![no_global_variable]({{ site.baseurl }}/assets/images/posts/global-variable-1.png)
 
 ###### 자바에는 전역변수의 개념이 없다
 
