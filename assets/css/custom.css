@@ -2,7 +2,6 @@
 Don't want to use sass and simply modify the stylesheet in the old css fashion? 
 Just customize your theme here.
 ================================================== */
-
 .skill {
   display: inline-block;
   text-align: center;
@@ -22,8 +21,8 @@ Just customize your theme here.
 }
 
 .special {
-  background-color: #7a96fc;
-  border-color: #7a96fc;
+  background-color: rgb(54, 130, 156);
+  border-color: rgb(54, 130, 156);
 }
 
 p {
@@ -56,6 +55,7 @@ section {
 
 .post-box {
   line-height: 1.2;
+  background: var(--background);
 }
 
 .post-box:hover .post-image {
@@ -65,7 +65,7 @@ section {
 }
 
 .post-box:hover .post-title {
-  color: #7a96fc;
+  color: rgb(54, 130, 156);
 }
 
 .pagination {
@@ -74,11 +74,12 @@ section {
   font-size: 1rem;
   font-weight: 500;
   letter-spacing: 10px;
-  color: #6c757d;
+  color: var(--font-color);
+  background: var(--background);
 }
 
 .current_page {
-  color: black !important;
+  color: var(--font-color-l) !important;
 }
 
 .post-body {
@@ -94,7 +95,7 @@ section {
 .home-title {
   font-family: "Pacifico", cursive;
   font-size: 1.75rem;
-  color: #7a96fc;
+  color: rgb(54, 130, 156);
 }
 
 #sequence {
@@ -109,7 +110,7 @@ section {
 }
 
 .active {
-  color: #333;
+  color: var(--font-color-l);
   font-weight: 600;
 }
 
@@ -117,20 +118,68 @@ section {
   p,
   li {
     font-size: 15px;
+    word-break: break-all;
   }
   h1 {
-    font-size: 1.5rem !important;
+    font-size: 1.4rem !important;
   }
   h3,
   h4,
   h5 {
-    font-size: 1.2rem !important;
+    font-size: 1.1rem !important;
   }
   #sequence {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     line-height: 1.2;
   }
   .introduction {
     margin-top: 0;
   }
+}
+
+.containertt {
+  transition: all 0.1s;
+  position: relative;
+}
+.overlay {
+  border-radius: 1rem;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 5%,
+    rgba(255, 255, 255, 0.8) 45%,
+    rgba(65, 82, 124, 0.6) 50%,
+    transparent 60%
+  );
+  filter: brightness(1) opacity(0.8);
+  mix-blend-mode: color-dodge;
+  background-size: 150% 150%;
+  background-position: 100%;
+  transition: all 0.1s;
+}
+
+br.break-p {
+  display: none;
+}
+@media (max-width: 500px) {
+  .footer {
+    margin-top: 1.5rem;
+  }
+  br.break-p {
+    display: inline;
+  }
+  .pl-3,
+  .px-3 {
+    padding-left: 0.3rem !important;
+  }
+  .pr-3,
+  .px-3 {
+    padding-right: 0.3rem !important;
+  }
+}
+
+.bi-three-dots-vertical {
+  fill: var(--font-color);
 }

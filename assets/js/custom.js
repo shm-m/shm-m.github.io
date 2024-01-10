@@ -1,18 +1,20 @@
+var container = document.querySelector(".containertt");
+var overlay = document.querySelector(".overlay");
+if (container) {
+  container.addEventListener("mousemove", function (e) {
+    var x = e.offsetX;
+    var y = e.offsetY;
+    var rotateY = (-1 / 5) * x + 20;
+    var rotateX = (4 / 30) * y - 20;
 
-var example = ['🏃‍♀️', '🚶‍♀️'];
+    overlay.style = `background-position : ${
+      x / 5 + y / 5
+    }%; filter : opacity(${x / 200}) brightness(1.2)`;
+  });
 
-textSequence(0);
-
-function textSequence(i) {
-
-    if (example.length > i) {
-        setTimeout(function() {
-            document.getElementById("sequence").innerHTML = example[i];
-            textSequence(++i);
-        }, 500); // 1 second (in milliseconds)
-
-    } else if (example.length == i) { // Loop
-        textSequence(0);
-    }
-
+  container.addEventListener("mouseout", function () {
+    overlay.style = "filter : opacity(0)";
+    container.style =
+      "transform : perspective(350px) rotateY(0deg) rotateX(0deg)";
+  });
 }

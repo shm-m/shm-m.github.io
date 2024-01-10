@@ -15,9 +15,9 @@
   display: block;
   padding: $nav-link-padding-y $nav-link-padding-x;
   font-weight: 500;
-  color: rgb(109, 109, 109);
+  color: var(--nav-link-color);
   @include hover-focus {
-    color: #7a96fc;
+    color: rgb(86, 137, 157);
   }
 
   // Disabled state lightens text

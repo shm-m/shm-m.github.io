@@ -13,27 +13,58 @@ $blue: #3d61fd !default;
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css");
+@import url("https://fonts.googleapis.com/css?family=Nanum+Gothic");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons+Sharp");
 
 html {
   scroll-behavior: smooth;
 }
 
+:root[color-theme="light"] {
+  --background: #fff;
+  --font-color: #333;
+  --font-color-l: #000000;
+  --nav-link-color: rgb(109, 109, 109);
+  --article-color: rgba(0, 0, 0, 0.8);
+  --blockquote-color: rgba(0, 0, 0, 0.5);
+  --codeblock-color: #f5f5f5bb;
+  --codeblock-highlight-color: #586e75;
+  --nav-scroll-shadow: rgba(0, 0, 0, 0.05);
+}
+
+:root[color-theme="dark"] {
+  --background: rgb(13, 13, 14);
+  --font-color: #d2d2d2;
+  --font-color-l: #fff;
+  --nav-link-color: rgb(186, 186, 186);
+  --article-color: rgba(255, 255, 255, 0.8);
+  --blockquote-color: rgba(255, 255, 255, 0.5);
+  --codeblock-color: #191c1c;
+  --codeblock-highlight-color: #a3b8bf;
+  --nav-scroll-shadow: rgb(255, 255, 255, 0.1);
+}
+
 body {
-  background: #fff;
+  background: var(--background);
   font-size: 1rem;
-  transition: all 200ms linear;
+  // transition: all 0.0002ms linear;
   font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
     "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", sans-serif;
   font-weight: 500;
   line-height: 1.8;
-  color: #333;
+  color: var(--font-color);
   overflow-x: hidden;
   padding-top: 90px;
+  // transition: background 1ms ease-in, color 1ms ease-in;
 }
+
 .serif-font {
   font-family: PT Serif;
 }
 @media (max-width: 768px) {
+  body {
+    padding-top: 50px;
+  }
   .container-xl,
   .container-lg,
   .container-md,
@@ -50,6 +81,18 @@ body {
   .container-sm,
   .container {
     width: 70%;
+    max-width: 90%;
+    padding: 0 25px;
+  }
+}
+
+@media (min-width: 1800px) {
+  .container-xl,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container {
+    width: 60%;
     max-width: 90%;
     padding: 0 25px;
   }
@@ -73,7 +116,7 @@ h6,
 .navbar-light .navbar-brand,
 .text-dark,
 .dropdown-item {
-  color: #000;
+  color: var(--font-color-l);
 }
 h1,
 h2,
@@ -147,7 +190,7 @@ small,
   padding: 5px 0;
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
-  box-shadow: 0px 10px 40px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 10px 40px 0px var(--nav-scroll-shadow);
 }
 .start-header.scroll-on .navbar-brand img {
   -webkit-transition: all 0.3s ease-out;
@@ -161,7 +204,7 @@ small,
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
   position: fixed;
-  background: #fff;
+  background: var(--background);
 }
 .social-icon {
   display: inline-block !important;
@@ -187,8 +230,9 @@ small,
 .hero {
   background: #939fff;
   padding: 5%;
-  background-image: url("/assets/images/back-img.png");
+  background-image: url("/assets/images/hero-img.png");
   background-size: cover;
+  color: #fff;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -219,7 +263,10 @@ small,
 
 .hero h1 {
   font-size: 2.5em;
+  // font-weight: 500;
+  color: #fff;
 }
+
 .section-title h2 {
   font-weight: 700;
   font-size: 1.4rem;
@@ -350,7 +397,7 @@ span.post-read-more a:hover {
   margin-bottom: 2rem;
 }
 .link-dark {
-  color: rgba(0, 0, 0, 0.8);
+  color: var(--article-color);
 }
 .article-post > * {
   margin-bottom: 1.5rem;
@@ -359,7 +406,7 @@ span.post-read-more a:hover {
   font-size: 1rem;
   line-height: 1.8;
   font-weight: 400;
-  color: rgba(0, 0, 0, 0.8);
+  color: var(--article-color);
   code {
     font-size: 15px;
   }
@@ -382,9 +429,9 @@ span.post-read-more a:hover {
 }
 
 blockquote {
-  border-left: 4px solid rgba(0, 0, 0, 0.5);
+  border-left: 4px solid var(--blockquote-color);
   padding: 0 0 0 20px;
-  color: rgba(0, 0, 0, 0.5);
+  color: var(--blockquote-color);
   font-size: 0.9em;
 }
 .featured-image {
@@ -714,6 +761,28 @@ span.navigation:before {
 }
 
 .hover-opacity:hover {
-  transition: all.3s;
+  transition: all 3s;
   opacity: 0.8;
+}
+
+.checkbox-wrap .check-icon {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: url("/assets/images/moon.png") left center no-repeat;
+  background-size: cover;
+  vertical-align: middle;
+  transition-duration: 0.3s;
+}
+.checkbox-wrap input[type="checkbox"] {
+  display: none;
+}
+.checkbox-wrap input[type="checkbox"]:checked + .check-icon {
+  background-image: url("/assets/images/sun.png");
+}
+
+.checkbox-wrap .check-icon:hover {
+  transition: all 1s ease-in-out;
+  scale: 1.2;
+  rotate: 360deg;
 }
