@@ -6,8 +6,8 @@ topmenu:
   - title: Project
     url: "projects"
 
-  - title: Post
-    url: "blog"
+  - title: Posts
+    url: "posts"
 
 # Footer Menu
 footermenu:

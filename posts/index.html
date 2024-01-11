@@ -1,0 +1,41 @@
+---
+title: "Posts"
+layout: default
+---
+
+<!-- Posts List with Sidebar (except featured)
+================================================== -->
+
+<div class="row mt-5" style="justify-content: center">
+  {% for post in paginator.posts %}
+  <div class="col-md-8 mb-5 px-xl-3 px-4 wow fadeInDown">
+    {% include postbox.html %}
+  </div>
+  {% endfor %}
+</div>
+
+<!-- Pagination -->
+{% if paginator.total_pages > 1 %}
+<div class="pagination pb-5">
+  {% if paginator.previous_page %}
+  <a href="{{ paginator.previous_page_path | relative_url }}">&#60;</a>
+  {% else %}
+  <span>&#60;</span>
+  {% endif %} {% for page in (1..paginator.total_pages) %} {% if page ==
+  paginator.page %}
+  <a class="current_page">{{ page }}</a>
+  {% elsif page == 1 %}
+  <a href="{{ site.paginate_path | relative_url | replace: ':num', '' }}"
+    >{{ page }}</a
+  >
+  {% else %}
+  <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}"
+    >{{ page }}</a
+  >
+  {% endif %} {% endfor %} {% if paginator.next_page %}
+  <a href="{{ paginator.next_page_path | relative_url }}">&#62;</a>
+  {% else %}
+  <span>&#62;</span>
+  {% endif %}
+</div>
+{% endif %}
