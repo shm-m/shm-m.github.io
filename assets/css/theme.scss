@@ -765,7 +765,7 @@ span.navigation:before {
   opacity: 0.8;
 }
 
-.checkbox-wrap .check-icon {
+.theme-btn-wrap .theme-btn {
   display: inline-block;
   width: 18px;
   height: 18px;
@@ -774,15 +774,15 @@ span.navigation:before {
   vertical-align: middle;
   transition-duration: 0.3s;
 }
-.checkbox-wrap input[type="checkbox"] {
+.theme-btn-wrap input[type="checkbox"] {
   display: none;
 }
-.checkbox-wrap input[type="checkbox"]:checked + .check-icon {
+.theme-btn-wrap input[type="checkbox"]:checked + .theme-btn {
   background-image: url("/assets/images/sun.png");
 }
 
-.checkbox-wrap .check-icon:hover {
+.theme-btn-wrap .theme-btn:hover {
   transition: all 1s ease-in-out;
   scale: 1.2;
-  rotate: 360deg;
+  rotate: 180deg;
 }
