@@ -18,6 +18,7 @@ $blue: #3d61fd !default;
 
 html {
   scroll-behavior: smooth;
+  overflow-y: scroll;
 }
 
 :root[color-theme="light"] {
@@ -416,7 +417,7 @@ span.post-read-more a:hover {
     text-underline-position: under;
   }
   a:hover {
-    color: #3d61fd;
+    color: rgb(57, 142, 171);
     text-decoration: none;
   }
   img,
