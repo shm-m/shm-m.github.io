@@ -183,3 +183,8 @@ br.break-p {
 .bi-three-dots-vertical {
   fill: var(--font-color);
 }
+
+.img-center {
+  display: block;
+  margin: auto;
+}
