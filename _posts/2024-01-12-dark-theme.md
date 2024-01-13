@@ -26,6 +26,8 @@ image: assets/images/posts/dark-theme.png
 </div>
 ```
 
+###### default.html
+
 우선 헤더에 테마 변경용 스위치를 넣어줍니다. 푸터에 넣으실 분들은 원하시는 태그에 넣으시면 됩니다.
 
 ```css
@@ -54,6 +56,8 @@ image: assets/images/posts/dark-theme.png
   rotate: 180deg;
 }
 ```
+
+###### theme.scss
 
 테마 변경 시 저처럼 아이콘을 바꿔 넣는 방식으로 구현하시는 분들도 있고, 토글로 구현하시는 분들도 계십니다. 둘 다 체크박스라는 점은 동일하니 편하신 방식으로 구현하시면 되겠습니다.
 
@@ -100,6 +104,8 @@ let changeTheme = (e) => {
 themeBtn.addEventListener("click", changeTheme);
 ```
 
+###### change-theme.js
+
 최초 진입했을 경우 `prefers-color-scheme`라는 미디어쿼리를 통해 사용자 OS에 적용된 테마를 가져오도록 구현하였고, 이후에는 로컬스토리지에 테마 값을 저장하여 불러오도록 하였습니다.
 
 테마 변경 아이콘 클릭(즉, 체크됨) 시에는 다크모드 여부 플래그 값을 true로 변경하고,
@@ -134,6 +140,8 @@ body {
   background: var(--background);
 }
 ```
+
+###### theme.scss
 
 테마에 따라 변경되어야 하는 색상들의 경우 `color-theme` 속성의 값에 변수로 설정해놓았습니다. 이렇게 설정해 놓은 변수들은 `var(--변수명)`을 통해 개별 태그에서 사용해주시면 됩니다.
 
