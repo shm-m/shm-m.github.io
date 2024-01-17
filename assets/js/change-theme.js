@@ -5,10 +5,20 @@ let setDarkTheme = (isDark) => {
     document.documentElement.setAttribute("color-theme", "light");
   }
   localStorage.setItem("theme", isDark ? "dark" : "default");
+
+  if (document.querySelector(".utterances-frame")) {
+    const message = {
+      type: "set-theme",
+      theme: isDark ? "github-dark" : "github-light",
+    };
+    const iframe = document.querySelector(".utterances-frame");
+    iframe.contentWindow.postMessage(message, "https://utteranc.es");
+  }
 };
 
 let currentTheme = localStorage.getItem("theme");
 let isDark = false;
+
 if (currentTheme) {
   isDark = currentTheme === "dark";
 } else {
