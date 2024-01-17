@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "GitHub Pages 다크 모드 수동 추가"
+categories: [github page]
 image: assets/images/posts/dark-theme.png
 ---
 
