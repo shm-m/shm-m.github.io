@@ -3,16 +3,11 @@ title: "Project"
 layout: default
 ---
 
-{% for project in site.projects %}
-{% if project.title != null %}
-{% if group == null or group == project.group %}
-<div class="row mt-5" style="justify-content: center;">
-    <div class="col-md-8 mb-5 px-xl-3 px-4 wow fadeInDown">
-      {% include projectbox.html %}
-    </div>
+{% for project in site.projects %} {% if project.title != null %} {% if group ==
+null or group == project.group %}
+<div class="row mt-5" style="justify-content: center">
+  <div class="col-md-8 mb-5 px-xl-5 px-4 wow fadeInDown">
+    {% include projectbox.html %}
+  </div>
 </div>
-{% endif %}
-{% endif %}
-{% assign group = nil %}
-{% endfor %}
-
+{% endif %} {% endif %} {% assign group = nil %} {% endfor %}

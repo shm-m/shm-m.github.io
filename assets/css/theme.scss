@@ -64,17 +64,15 @@ body {
 }
 @media (max-width: 768px) {
   body {
-    padding-top: 50px;
+    padding-top: 60px;
   }
   .container-xl,
   .container-lg,
   .container-md,
   .container-sm,
-  .container {
-    width: 90%;
-  }
+  .container,
   .utterances {
-    width: 90%;
+    width: 93%;
   }
 }
 
@@ -239,7 +237,7 @@ small,
 ================================================== */
 .hero {
   background: rgb(57, 142, 171);
-  padding: 5%;
+  padding: 4%;
   background-image: url("/assets/images/hero-img.png");
   background-size: cover;
   color: #fff;
@@ -795,4 +793,26 @@ span.navigation:before {
   transition: all 1s ease-in-out;
   scale: 1.2;
   rotate: 180deg;
+}
+
+.project-desc {
+  color: rgb(134, 134, 134);
+  margin-top: -15px;
+  font-weight: 400;
+}
+
+.project {
+  align-items: baseline;
+  display: flex;
+  .project-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  .project-timeline {
+    color: rgb(134, 134, 134);
+    font-weight: 400;
+    font-size: 0.9rem;
+    padding-left: 10px;
+  }
 }
