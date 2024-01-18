@@ -1,13 +1,26 @@
 ---
 layout: post
 title: "GitHub Pages 다크 모드 수동 추가"
-categories: [github page]
+categories: [github pages]
 image: assets/images/posts/dark-theme.png
 ---
 
-깃블로그 리뉴얼을 할겸 다크 모드를 추가하고 싶어졌습니다. ~~사실 처음부터 다크 모드를 지원해주는 지킬 테마를 사용하면 될 일~~
+새해를 맞아 방치했던 블로그를 업데이트하고 싶어 아래와 같은 기능을 추가하기로 결심했습니다.
 
-혹시나 저처럼 다크 모드 미지원 jekyll 테마를 쓰셔서 손수 붙여놓으실 분들을 위해 해당 포스트를 작성해봅니다.
+1. 무한스크롤
+2. 댓글 기능
+3. 다크 모드
+
+이 중 다크 모드 기능을 제일 먼저 구현하기로 결심했습니다. ~~사실 처음부터 다크 모드를 지원해주는 지킬 테마를 사용하면 될 일~~
+
+![theme-change]({{ site.baseurl }}/assets/images/posts/opening.png){: .img-center}
+
+###### 아직 사람있다고요
+
+해당 기능은 `jekyll` + `liquid`를 사용하여 구현했습니다. 요새는 깃허브 페이지를 포스팅 용도로는 번거러워 잘 안쓰고.. 사용하시더라도 진작 `Gatsby.js`로 마이그하셨거나, 최근에는 `Next.js`로 구현하는 추세더군요.
+저도 언젠가는 후자의 방식으로 마이그레이션을 하고 싶습니다.. 언젠가..
+
+각설하고 저처럼 다크모드 없는 `jekyll` 테마를 받으셨다가 간단하게라도 만들어내고 싶으신 분들을 위해 해당 포스트를 작성합니다.
 
 ### nav-bar(header)에 테마 변경 switch 추가
 
@@ -89,7 +102,7 @@ if (currentTheme) {
   isDark = matchMedia("(prefers-color-scheme: dark)").matches; // 최초 진입 시, 사용자 OS 설정에 맞춤
 }
 
-setDarkTheme(isDark);
+setDarkTheme(isDark); // 토글을 통해서가 아닌 페이지 접속 시 실행할 부분
 
 let themeBtn = document.getElementById("btn_change_theme");
 

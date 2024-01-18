@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "블로그 리뉴얼"
-categories: [github page]
+categories: [github pages]
 image: assets/images/renewal-blog.png
 ---
 
