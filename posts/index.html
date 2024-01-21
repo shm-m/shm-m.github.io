@@ -16,11 +16,11 @@ layout: default
 
 <!-- Pagination -->
 {% if paginator.total_pages > 1 %}
-<div class="pagination pb-5">
+<div class="pagination py-5">
   {% if paginator.previous_page %}
   <a href="{{ paginator.previous_page_path | relative_url }}">&#60;</a>
   {% else %}
-  <span>&#60;</span>
+  <!-- <span>&#60;</span> -->
   {% endif %} {% for page in (1..paginator.total_pages) %} {% if page ==
   paginator.page %}
   <a class="current_page">{{ page }}</a>
@@ -35,7 +35,7 @@ layout: default
   {% endif %} {% endfor %} {% if paginator.next_page %}
   <a href="{{ paginator.next_page_path | relative_url }}">&#62;</a>
   {% else %}
-  <span>&#62;</span>
+  <!-- <span>&#62;</span> -->
   {% endif %}
 </div>
 {% endif %}

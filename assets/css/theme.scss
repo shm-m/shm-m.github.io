@@ -795,24 +795,35 @@ span.navigation:before {
   rotate: 180deg;
 }
 
-.project-desc {
+.experience-desc {
   color: rgb(134, 134, 134);
   margin-top: -15px;
   font-weight: 400;
 }
 
-.project {
+.experience {
   align-items: baseline;
   display: flex;
-  .project-title {
+  .experience-title {
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
+    margin-top: 0;
   }
 
-  .project-timeline {
+  .experience-timeline {
     color: rgb(134, 134, 134);
     font-weight: 400;
     font-size: 0.9rem;
     padding-left: 10px;
+  }
+}
+
+.experience-detail {
+  padding-left: 1rem;
+  // color: rgb(57, 142, 171);
+  // list-style-type: "- ";
+  margin-bottom: 0;
+  li::marker {
+    color: rgb(57, 142, 171);
   }
 }
