@@ -14,15 +14,16 @@ Just customize your theme here.
   line-height: 1.5;
   border-radius: 100px;
   color: #fff;
-  background-color: #343a40;
-  border-color: #343a40;
+  background-color: rgb(103, 108, 112);
+  border-color: rgb(103, 108, 112);
   margin: 10px 20px 4px 0px;
   padding: 4px 15px;
 }
 
 .special {
-  background-color: rgb(57, 142, 171);
-  border-color: rgb(57, 142, 171);
+  background-color: var(--font-color-l);
+  border-color: var(--font-color-l);
+  color: var(--background);
 }
 
 p {
@@ -30,15 +31,12 @@ p {
   margin-top: 3px;
 }
 
-section {
-  margin-top: 4rem;
-}
-
-.introduction {
+.profile {
   margin-top: 5px;
   font-size: 1rem;
   list-style: none;
-  margin-left: -1rem;
+  margin-left: 0;
+  padding-left: 0;
   margin-bottom: 0;
 }
 
@@ -122,12 +120,15 @@ section {
     word-break: break-all;
   }
   h1 {
-    font-size: 1.4rem !important;
+    font-size: 2rem !important;
   }
   h3,
-  h4,
-  h5.company {
+  h4 {
     font-size: 1.25rem !important;
+  }
+
+  h3.company {
+    font-size: 1.5rem !important;
   }
   h5 {
     font-size: 1.1rem !important;
@@ -136,7 +137,7 @@ section {
     font-size: 1.4rem;
     line-height: 1.2;
   }
-  .introduction {
+  .profile {
     margin-top: 0;
   }
 }
@@ -191,4 +192,132 @@ br.break-p {
 .img-center {
   display: block;
   margin: auto;
+}
+
+#dung {
+  position: relative;
+  width: 70%;
+  animation-name: swing, floating;
+  animation-duration: 30s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+#bubble {
+  position: absolute;
+  width: 20%;
+  animation-name: floating;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes ani {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(0, 50px);
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(0px, 4px) rotate(0deg);
+  }
+
+  50% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(0px, 4px) rotate(0deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 30deg;
+  }
+}
+
+@keyframes floating {
+  from {
+    translate: 0 0px;
+  }
+  65% {
+    translate: 0 45px;
+  }
+  to {
+    translate: 0 -0px;
+  }
+}
+
+.swing {
+  animation: swing ease-in-out 1s infinite alternate;
+  transform-origin: center -20px;
+  float: left;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.swing:after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #999;
+  top: -10px;
+  left: 50%;
+  z-index: 0;
+  border-bottom: none;
+  border-right: none;
+  transform: rotate(45deg);
+}
+/* nail */
+.swing:before {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  top: -14px;
+  left: 54%;
+  z-index: 5;
+  border-radius: 50% 50%;
+  background: #000;
+}
+
+@keyframes swing {
+  0% {
+    transform: rotate(3deg);
+  }
+  100% {
+    transform: rotate(-3deg);
+  }
+}
+
+.bubble-1 {
+  left: 30%;
+  top: 30%;
+}
+.bubble-2 {
+  left: 50%;
+  top: 60%;
+}
+
+.bubble-3 {
+  left: 80%;
+  top: 25%;
+}
+
+.main-img {
+  text-align: right;
+  position: relative;
+}
+
+.introduction {
+  font-weight: 400 !important;
+  text-align: left;
 }

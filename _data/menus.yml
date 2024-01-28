@@ -1,12 +1,12 @@
 # Top Menu
 topmenu:
-  - title: About
+  - title: ABOUT
     url: "about"
 
-  - title: Projects
+  - title: PROJECT
     url: "projects"
 
-  - title: Posts
+  - title: POST
     url: "posts"
 
 # Footer Menu

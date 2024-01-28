@@ -74,6 +74,23 @@ body {
   .utterances {
     width: 93%;
   }
+  .stress {
+    position: absolute;
+    top: 40%;
+    text-align: left;
+    font-size: 3rem;
+    color: var(--font-color-l);
+    font-weight: 700;
+    line-height: 1.5;
+    text-shadow: 3px 4px 10px rgb(179 179 179 / 35%);
+  }
+  section {
+    margin-top: 3rem;
+  }
+
+  .item {
+    padding-bottom: 0.5rem;
+  }
 }
 
 @media (min-width: 768px) {
@@ -89,6 +106,23 @@ body {
       width: 75%;
     }
   }
+  .stress {
+    position: absolute;
+    top: 40%;
+    text-align: left;
+    font-size: 5rem;
+    color: var(--font-color-l);
+    font-weight: 700;
+    line-height: 1.5;
+    text-shadow: 3px 4px 10px rgb(179 179 179 / 35%);
+  }
+  section {
+    margin-top: 5rem;
+  }
+
+  .item {
+    padding-bottom: 1.5rem;
+  }
 }
 
 @media (min-width: 2000px) {
@@ -103,6 +137,23 @@ body {
     .content {
       width: 70%;
     }
+  }
+  .stress {
+    position: absolute;
+    top: 40%;
+    text-align: left;
+    font-size: 5rem;
+    color: var(--font-color-l);
+    font-weight: 700;
+    line-height: 1.5;
+    text-shadow: 3px 4px 10 px rgb(179 179 179 / 35%);
+  }
+  section {
+    margin-top: 5rem;
+  }
+
+  .item {
+    padding-bottom: 1.5rem;
   }
 }
 
@@ -799,6 +850,7 @@ span.navigation:before {
   color: rgb(134, 134, 134);
   margin-top: -15px;
   font-weight: 400;
+  padding-bottom: 1rem;
 }
 
 .experience {
@@ -809,13 +861,12 @@ span.navigation:before {
     font-size: 1.3rem;
     margin-top: 0;
   }
+}
 
-  .experience-timeline {
-    color: rgb(134, 134, 134);
-    font-weight: 400;
-    font-size: 0.9rem;
-    padding-left: 10px;
-  }
+.experience-timeline {
+  color: rgb(134, 134, 134);
+  font-weight: 400;
+  font-size: 0.9rem;
 }
 
 .experience-detail {
@@ -824,6 +875,6 @@ span.navigation:before {
   // list-style-type: "- ";
   margin-bottom: 0;
   li::marker {
-    color: rgb(57, 142, 171);
+    color: rgb(103, 108, 112);
   }
 }
