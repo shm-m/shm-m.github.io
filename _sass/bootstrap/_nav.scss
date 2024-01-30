@@ -17,7 +17,7 @@
   font-weight: 500;
   color: var(--nav-link-color);
   @include hover-focus {
-    color: rgb(86, 137, 157);
+    text-decoration: underline;
   }
 
   // Disabled state lightens text

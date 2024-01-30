@@ -87,11 +87,15 @@ body {
     text-shadow: var(--title-text-shadow);
   }
   section {
-    margin-top: 3rem;
+    margin-top: 3.5rem;
   }
 
   .item {
     padding-bottom: 0.5rem;
+  }
+
+  .company {
+    padding-top: 1rem;
   }
 }
 
@@ -102,11 +106,10 @@ body {
   .container-sm,
   .container,
   .utterances {
-    width: 65%;
-    padding: 0 25px;
-    .content {
-      width: 75%;
-    }
+    padding: 0 16rem;
+    // .content {
+    //   width: 75%;
+    // }
   }
   .stress {
     position: absolute;
@@ -134,11 +137,10 @@ body {
   .container-sm,
   .container,
   .utterances {
-    width: 50%;
-    padding: 0 25px;
-    .content {
-      width: 70%;
-    }
+    padding: 0 14rem;
+    // .content {
+    //   width: 70%;
+    // }
   }
   .stress {
     position: absolute;
@@ -477,7 +479,7 @@ span.post-read-more a:hover {
     text-underline-position: under;
   }
   a:hover {
-    color: rgb(57, 142, 171);
+    color: rgb(103, 108, 112);
     text-decoration: none;
   }
   img,
@@ -849,10 +851,17 @@ span.navigation:before {
 }
 
 .experience-desc {
-  color: rgb(134, 134, 134);
+  // color: rgb(134, 134, 134);
   margin-top: -15px;
   font-weight: 400;
   padding-bottom: 1rem;
+  @media (max-width: 768px) {
+    padding-bottom: 0;
+  }
+}
+
+.item-small {
+  text-decoration: underline;
 }
 
 .experience {
@@ -862,6 +871,9 @@ span.navigation:before {
     font-weight: 700;
     font-size: 1.3rem;
     margin-top: 0;
+  }
+  @media (max-width: 768px) {
+    padding-top: 1rem !important;
   }
 }
 
