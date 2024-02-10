@@ -8,6 +8,12 @@
     />
     <link rel="icon" href="{{ site.baseurl }}/{{site.favicon}}" />
 
+    <script>
+      localStorage.getItem("theme") === "dark"
+        ? document.documentElement.setAttribute("color-theme", "dark")
+        : document.documentElement.setAttribute("color-theme", "light");
+    </script>
+
     {% if page.title != null %}
     <title>{{page.title}} | {{site.title}}</title>
     {% else %}
