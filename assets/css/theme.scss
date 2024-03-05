@@ -99,7 +99,35 @@ body {
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
+  .container-xl,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container,
+  .utterances {
+    padding: 0 8rem;
+  }
+  .stress {
+    position: absolute;
+    top: 45%;
+    text-align: left;
+    font-size: 3.5rem;
+    color: var(--font-color-l);
+    font-weight: 700;
+    line-height: 1.5;
+    text-shadow: var(--title-text-shadow);
+  }
+  section {
+    margin-top: 5rem;
+  }
+
+  .item {
+    padding-bottom: 1.5rem;
+  }
+}
+
+@media (min-width: 993px) {
   .container-xl,
   .container-lg,
   .container-md,
