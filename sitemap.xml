@@ -8,7 +8,7 @@ layout: null
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     {% for post in site.posts %}
     <url>
-        <loc>{{ site.url }}{{ post.url }}.html</loc>
+        <loc>{{ site.url }}{{ post.url }}</loc>
         {% if post.lastmod == null %}
         <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
         {% else %}
@@ -25,6 +25,7 @@ layout: null
         <priority>0.5</priority>
         {% else %}
         <priority>{{ post.sitemap.priority }}</priority>
+
         {% endif %}
 
     </url>
