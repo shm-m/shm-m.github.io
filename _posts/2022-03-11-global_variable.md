@@ -2,7 +2,7 @@
 layout: post
 title: "전역변수는 멤버변수와 같은 것일까?"
 categories: [java]
-image: assets/images/global-variable.png
+image: assets/images/global-variable.webp
 ---
 
 ### 결과부터 말하자면 아님
