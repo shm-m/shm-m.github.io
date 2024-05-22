@@ -1,6 +1,4 @@
 User-agent: *
-Disallow: /categories/
-Disallow: /about
-Allow: /
+Disallow: /
 
 Sitemap: https://shm-m.github.io/sitemap.xml
