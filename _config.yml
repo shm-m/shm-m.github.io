@@ -26,8 +26,6 @@ sass:
   sass_dir: _sass
   style: :compressed
 
-google-analytics: G-6VQFGYS79F
-
 # Plugins
 plugins:
   - jekyll-sitemap
