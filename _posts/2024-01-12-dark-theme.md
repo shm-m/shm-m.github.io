@@ -2,7 +2,7 @@
 layout: post
 title: "GitHub Pages 다크 모드 수동 추가"
 categories: [github pages]
-image: assets/images/posts/dark-theme.png
+image: assets/images/posts/dark-theme2.png
 ---
 
 새해를 맞아 방치했던 블로그를 업데이트하고 싶어 아래와 같은 기능을 추가하기로 결심했습니다.
