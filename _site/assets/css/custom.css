@@ -1,0 +1,324 @@
+/* 
+Don't want to use sass and simply modify the stylesheet in the old css fashion? 
+Just customize your theme here.
+================================================== */
+.skill {
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  border-radius: 100px;
+  color: #fff;
+  background-color: #868686;
+  border-color: #868686;
+  margin: 10px 20px 4px 0px;
+  padding: 4px 15px;
+}
+
+.special {
+  background-color: var(--font-color-l);
+  border-color: var(--font-color-l);
+  color: var(--background);
+}
+
+p {
+  font-size: 1rem;
+  margin-top: 3px;
+}
+
+.profile {
+  margin-top: 5px;
+  font-size: 1rem;
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.background-image {
+  width: 100vw;
+  height: 350px;
+  object-fit: cover;
+}
+
+.post_info {
+  color: #6c757d;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.post-box {
+  line-height: 1.2;
+  background: var(--background);
+}
+
+.post-box:hover .post-image {
+  box-shadow: 2px 2px 40px rgb(184, 177, 167);
+  position: relative;
+  top: -5px;
+}
+
+.post-box:hover .post-title {
+  text-decoration: underline;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 10px;
+  color: var(--font-color);
+  background: var(--background);
+}
+
+.current_page {
+  color: var(--font-color-l) !important;
+}
+
+.post-body {
+  padding: 0 100px;
+}
+
+.pjt-info {
+  border-radius: 0.5rem;
+  border: 1px solid #d9d9d9;
+  padding: 20px 10px;
+}
+
+.home-title {
+  font-family: "Pacifico", cursive;
+  font-size: 1.75rem;
+  color: rgb(57, 142, 171);
+}
+
+#sequence {
+  font-size: 2rem;
+  line-height: 1.5;
+  margin-left: 10px;
+}
+
+.intro {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.active {
+  color: var(--font-color-l);
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  p,
+  li {
+    font-size: 15px;
+    word-break: break-all;
+  }
+  h1 {
+    font-size: 2rem !important;
+  }
+  h3,
+  h4 {
+    font-size: 1.25rem !important;
+  }
+
+  h3.company {
+    font-size: 1.5rem !important;
+  }
+  h5 {
+    font-size: 1.1rem !important;
+  }
+  #sequence {
+    font-size: 1.4rem;
+    line-height: 1.2;
+  }
+  .profile {
+    margin-top: 0;
+  }
+}
+
+.containertt {
+  transition: all 0.1s;
+  position: relative;
+}
+.overlay {
+  border-radius: 1rem;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 5%,
+    rgba(255, 255, 255, 0.8) 45%,
+    rgba(65, 82, 124, 0.6) 50%,
+    transparent 60%
+  );
+  filter: brightness(1) opacity(0.8);
+  mix-blend-mode: color-dodge;
+  background-size: 150% 150%;
+  background-position: 100%;
+  transition: all 0.1s;
+}
+
+br.break-p {
+  display: none;
+}
+@media (max-width: 500px) {
+  .footer {
+    margin-top: 1.5rem;
+  }
+  br.break-p {
+    display: inline;
+  }
+  .pl-3,
+  .px-3 {
+    padding-left: 0.3rem !important;
+  }
+  .pr-3,
+  .px-3 {
+    padding-right: 0.3rem !important;
+  }
+}
+
+.bi-three-dots-vertical {
+  fill: var(--font-color);
+}
+
+.img-center {
+  display: block;
+  margin: auto;
+}
+
+#ballondog {
+  position: relative;
+  width: 70%;
+  animation-name: swing, floating;
+  animation-duration: 30s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+#bubble {
+  position: absolute;
+  width: 20%;
+  animation-name: floating;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes ani {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(0, 50px);
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(0px, 4px) rotate(0deg);
+  }
+
+  50% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(0px, 4px) rotate(0deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 30deg;
+  }
+}
+
+@keyframes floating {
+  from {
+    translate: 0 0px;
+  }
+  65% {
+    translate: 0 45px;
+  }
+  to {
+    translate: 0 -0px;
+  }
+}
+
+.swing {
+  animation: swing ease-in-out 1s infinite alternate;
+  transform-origin: center -20px;
+  float: left;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.swing:after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #999;
+  top: -10px;
+  left: 50%;
+  z-index: 0;
+  border-bottom: none;
+  border-right: none;
+  transform: rotate(45deg);
+}
+/* nail */
+.swing:before {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  top: -14px;
+  left: 54%;
+  z-index: 5;
+  border-radius: 50% 50%;
+  background: #000;
+}
+
+@keyframes swing {
+  0% {
+    transform: rotate(3deg);
+  }
+  100% {
+    transform: rotate(-3deg);
+  }
+}
+
+.bubble-1 {
+  left: 30%;
+  top: 30%;
+}
+.bubble-2 {
+  left: 50%;
+  top: 60%;
+}
+
+.bubble-3 {
+  left: 80%;
+  top: 25%;
+}
+
+.main-img {
+  text-align: right;
+  position: relative;
+  margin-top: -1rem;
+}
+
+.introduction {
+  font-weight: 400 !important;
+  text-align: left;
+}

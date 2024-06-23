@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta
+      name="google-site-verification"
+      content="-urvg5tCmRoQr1Cod5VpXFLsjyTrsARYexvk82_z2Ag"
+    />
+    <link rel="icon" href="/assets/images/favicon.ico" />
+
+    <script>
+      localStorage.getItem("theme") === "dark"
+        ? document.documentElement.setAttribute("color-theme", "dark")
+        : document.documentElement.setAttribute("color-theme", "light");
+    </script>
+
+    
+    <title>GitHub Pages 다크 모드 수동 추가 | shm-m</title>
+     <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>GitHub Pages 다크 모드 수동 추가 | shm-m</title>
+<meta name="generator" content="Jekyll v4.3.3" />
+<meta property="og:title" content="GitHub Pages 다크 모드 수동 추가" />
+<meta name="author" content="Sehee Moon" />
+<meta property="og:locale" content="en_us" />
+<meta name="description" content="새해를 맞아 방치했던 블로그를 업데이트하고 싶어 아래와 같은 기능을 추가하기로 결심했습니다." />
+<meta property="og:description" content="새해를 맞아 방치했던 블로그를 업데이트하고 싶어 아래와 같은 기능을 추가하기로 결심했습니다." />
+<link rel="canonical" href="http://localhost:4000/posts/dark-theme" />
+<meta property="og:url" content="http://localhost:4000/posts/dark-theme" />
+<meta property="og:site_name" content="shm-m" />
+<meta property="og:image" content="http://localhost:4000/assets/images/posts/dark-theme2.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-01-12T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="http://localhost:4000/assets/images/posts/dark-theme2.png" />
+<meta property="twitter:title" content="GitHub Pages 다크 모드 수동 추가" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sehee Moon"},"dateModified":"2024-01-12T00:00:00+00:00","datePublished":"2024-01-12T00:00:00+00:00","description":"새해를 맞아 방치했던 블로그를 업데이트하고 싶어 아래와 같은 기능을 추가하기로 결심했습니다.","headline":"GitHub Pages 다크 모드 수동 추가","image":"http://localhost:4000/assets/images/posts/dark-theme2.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/dark-theme"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"Sehee Moon"},"url":"http://localhost:4000/posts/dark-theme"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link href="/assets/css/theme.css" rel="stylesheet" />
+
+    <!-- custom CSS - Remove this if you don't use it or choose to customize the stylesheet with sass-->
+    <link href="/assets/css/custom.css" rel="stylesheet" />
+
+    <!-- syntax -->
+    <link href="/assets/css/syntax.css" rel="stylesheet" />
+    <!-- custom CSS end-->
+    <!-- <link href="/assets/css/dark.css" rel="stylesheet" /> -->
+    
+
+    <!-- wow.js -->
+    <link rel="stylesheet" href="/assets/css/animate.css" />
+    <script src="/assets/js/wow.min.js"></script>
+    <script>
+      new WOW().init();
+    </script>
+  </head>
+
+  
+  <body class="layout-post">
+    <!-- Menu Navigation
+================================================== -->
+    <div class="navigation-wrap start-header start-style">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <!-- <a
+            class="navbar-brand font-weight-bold big d-flex align-items-center home-title"
+            href="/"
+          >
+            Sayhi
+          </a> -->
+
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarResponsive"
+            aria-controls="navbarResponsive"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="26"
+              height="26"
+              class="bi bi-three-dots-vertical"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"
+              />
+            </svg>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+               
+              
+              <li class="nav-item">
+                <a
+                  class="nav-link px-3  "
+                  href="/about"
+                  alt="ABOUT"
+                  >ABOUT</a
+                >
+              </li>
+               
+              
+              <li class="nav-item">
+                <a
+                  class="nav-link px-3  "
+                  href="/projects"
+                  alt="PROJECT"
+                  >PROJECT</a
+                >
+              </li>
+               
+              
+              <li class="nav-item">
+                <a
+                  class="nav-link px-3  active"
+                  href="/posts"
+                  alt="POST"
+                  >POST</a
+                >
+              </li>
+              
+              <li class="nav-item">
+                <label class="theme-btn-wrap px-3" for="btn_change_theme"
+                  ><input type="checkbox" id="btn_change_theme" /><i
+                    class="theme-btn"
+                  ></i
+                ></label>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Container
+================================================== -->
+    <div>
+      
+      <img
+        class="featured-image background-image"
+        src="/assets/images/posts/dark-theme2.png"
+        alt="GitHub Pages 다크 모드 수동 추가"
+      />
+      
+    </div>
+    <main class="container"><!-- Begin Article
+================================================== -->
+       <div class="content mx-auto pb-5 px-xl-4">
+		<!-- Post -->        
+			<div class="mainheading pb-4">             
+                <!-- Post Categories -->
+                <div class="after-post-tags">
+                    <ul class="tags">
+                        
+                        
+                        <li>
+                         <a href="/categories#github-pages">github pages</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <!-- End Categories -->
+                
+                <!-- Post Title -->
+				<h1 class="posttitle mb-3">GitHub Pages 다크 모드 수동 추가</h2> 
+                
+			</div>
+
+			<!-- Post Content -->
+			<div class="article-post">
+				<p>새해를 맞아 방치했던 블로그를 업데이트하고 싶어 아래와 같은 기능을 추가하기로 결심했습니다.</p>
+
+<ol>
+  <li>무한 스크롤 변경</li>
+  <li>댓글 기능</li>
+  <li>다크 모드</li>
+</ol>
+
+<p>이 중 다크 모드 기능을 제일 먼저 구현하기로 결심했습니다. 사실 처음부터 다크 모드를 지원해주는 테마를 사용하면 될 일 ㅎ</p>
+
+<p>해당 기능은 <code class="language-plaintext highlighter-rouge">jekyll</code>을 사용하여 구현했습니다. 요새는 깃허브 페이지를 포스팅 용도로는 번거로워 잘 안쓰더라고요? 사용하시더라도 진작 <code class="language-plaintext highlighter-rouge">Gatsby.js</code>로 마이그하셨거나, 최근에는 <code class="language-plaintext highlighter-rouge">Next.js</code>로 구현하는 추세더군요.
+저도 언젠가는 후자의 방식으로 마이그레이션을 하고 싶습니다.. 언젠가..</p>
+
+<p><img src="/assets/images/posts/opening.png" alt="theme-change" class="img-center" /></p>
+
+<h6 id="아직-사람있다고요">아직 사람있다고요</h6>
+
+<p>각설하고 저처럼 다크모드 없는 <code class="language-plaintext highlighter-rouge">jekyll</code> 테마를 받으셨다가 간단하게라도 만들어내고 싶으신 분들을 위해 해당 포스트를 작성합니다.</p>
+
+<hr />
+
+<h3 id="nav-barheader에-테마-변경-switch-추가">nav-bar(header)에 테마 변경 switch 추가</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"collapse navbar-collapse"</span> <span class="na">id=</span><span class="s">"navbarResponsive"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"navbar-nav ml-auto d-flex align-items-center"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- 메뉴 리스트 --&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;&lt;/li&gt;</span>
+
+    <span class="c">&lt;!-- 메뉴 리스트에 테마 변경 스위치 추가 --&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"theme-btn-wrap px-3"</span> <span class="na">for=</span><span class="s">"btn_change_theme"</span>
+        <span class="nt">&gt;&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"btn_change_theme"</span> <span class="nt">/&gt;&lt;i</span> <span class="na">class=</span><span class="s">"theme-btn"</span><span class="nt">&gt;&lt;/i</span>
+      <span class="nt">&gt;&lt;/label&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h6 id="defaulthtml">default.html</h6>
+
+<p>헤더에 테마 변경용 스위치를 넣어줌. 푸터에 넣으실 분들은 원하시는 태그에 넣으시면 됩니다.</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/* 디폴트 상태 */</span>
+<span class="nc">.theme-btn-wrap</span> <span class="nc">.theme-btn</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">inline-block</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">18px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">18px</span><span class="p">;</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="sx">url("/assets/images/moon.png")</span> <span class="nb">left</span> <span class="nb">center</span> <span class="nb">no-repeat</span><span class="p">;</span>
+  <span class="nl">background-size</span><span class="p">:</span> <span class="n">cover</span><span class="p">;</span>
+  <span class="nl">vertical-align</span><span class="p">:</span> <span class="nb">middle</span><span class="p">;</span>
+  <span class="nl">transition-duration</span><span class="p">:</span> <span class="m">0.3s</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.theme-btn-wrap</span> <span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s1">"checkbox"</span><span class="o">]</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c">/* 다크모드로 변경되었을 때 */</span>
+<span class="nc">.theme-btn-wrap</span> <span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s1">"checkbox"</span><span class="o">]</span><span class="nd">:checked</span> <span class="o">+</span> <span class="nc">.theme-btn</span> <span class="p">{</span>
+  <span class="nl">background-image</span><span class="p">:</span> <span class="sx">url("/assets/images/sun.png")</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">/* 스위치에 마우스 오버 시 효과 */</span>
+<span class="nc">.theme-btn-wrap</span> <span class="nc">.theme-btn</span><span class="nd">:hover</span> <span class="p">{</span>
+  <span class="nl">transition</span><span class="p">:</span> <span class="n">all</span> <span class="m">1s</span> <span class="n">ease-in-out</span><span class="p">;</span>
+  <span class="py">scale</span><span class="p">:</span> <span class="m">1.2</span><span class="p">;</span>
+  <span class="py">rotate</span><span class="p">:</span> <span class="m">180deg</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h6 id="themescss">theme.scss</h6>
+
+<p>테마 변경 시 저처럼 아이콘을 바꿔 넣는 방식으로 구현하시는 분들도 있고, 토글로 구현하시는 분들도 계십니다. 둘 다 체크박스라는 점은 동일하니 편하신 방식으로 구현하면 됨.</p>
+
+<p>미체크 상태는 디폴트(라이트 모드)로, 체크된 상태를 다크 모드 시의 아이콘으로 표시되게 해주었습니다. 추가로 그냥 아이콘만 변하는 건 심심해서 마우스 오버 시 회전 및 확대되도록 구현하였습니다.</p>
+
+<hr />
+
+<h3 id="테마-변경용-script-작성">테마 변경용 script 작성</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 테마 변경에 따른 HTML 요소 속성값 변경</span>
+<span class="kd">let</span> <span class="nx">setDarkTheme</span> <span class="o">=</span> <span class="p">(</span><span class="nx">isDark</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">isDark</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">color-theme</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">dark</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">color-theme</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">light</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="c1">// 로컬스토리지 값에 사용자가 설정한 테마 저장</span>
+  <span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="dl">"</span><span class="s2">theme</span><span class="dl">"</span><span class="p">,</span> <span class="nx">isDark</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">dark</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">default</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="kd">let</span> <span class="nx">currentTheme</span> <span class="o">=</span> <span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="dl">"</span><span class="s2">theme</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">isDark</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">currentTheme</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">isDark</span> <span class="o">=</span> <span class="nx">currentTheme</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">dark</span><span class="dl">"</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="nx">isDark</span> <span class="o">=</span> <span class="nx">matchMedia</span><span class="p">(</span><span class="dl">"</span><span class="s2">(prefers-color-scheme: dark)</span><span class="dl">"</span><span class="p">).</span><span class="nx">matches</span><span class="p">;</span> <span class="c1">// 최초 진입 시, 사용자 OS 설정에 맞춤</span>
+<span class="p">}</span>
+
+<span class="nx">setDarkTheme</span><span class="p">(</span><span class="nx">isDark</span><span class="p">);</span> <span class="c1">// 토글을 통해서가 아닌 페이지 접속 시 실행할 부분</span>
+
+<span class="kd">let</span> <span class="nx">themeBtn</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">btn_change_theme</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">themeBtn</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">themeBtn</span><span class="p">.</span><span class="nx">checked</span> <span class="o">=</span> <span class="nx">isDark</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 스위치의 체크 여부를 통해 다크모드 여부 설정</span>
+<span class="kd">let</span> <span class="nx">changeTheme</span> <span class="o">=</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">setDarkTheme</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">checked</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nx">themeBtn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="nx">changeTheme</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h6 id="change-themejs">change-theme.js</h6>
+
+<p>최초 진입했을 경우 <code class="language-plaintext highlighter-rouge">prefers-color-scheme</code>라는 미디어쿼리를 통해 사용자 OS에 적용된 테마를 가져오도록 구현하였고, 이후에는 로컬스토리지에 테마 값을 저장하여 불러오도록 하였습니다.</p>
+
+<p>테마 변경 아이콘 클릭(즉, 체크됨) 시에는 다크모드 여부 플래그 값을 true로 변경하고,
+<code class="language-plaintext highlighter-rouge">color-theme</code>이라는 HTML 요소 속성을 별도로 만들어 모드에 따라 해당 속성의 값을 바꾸어주었습니다.</p>
+
+<p>제 블로그에서는 테마 변경 시 바뀌는 건 그래봤자 배경색, 폰트색 등 색상 위주고 그마저도 많지 않았습니다.
+그러나 보다 다양한 기능을 구현하고 싶으시면 저처럼 HTML 요소로 빼지 마시고, <strong>CSS 파일을 테마 별로 생성하여 조건문을 통해 바꾸시는 걸 추천드립니다. (<code class="language-plaintext highlighter-rouge">_config.yml</code> 파일 작업 필요)</strong></p>
+
+<hr />
+
+<h3 id="테마에-따른-css-변경">테마에 따른 CSS 변경</h3>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">:root</span><span class="o">[</span><span class="nt">color-theme</span><span class="o">=</span><span class="s1">"light"</span><span class="o">]</span> <span class="p">{</span>
+  <span class="py">--background</span><span class="p">:</span> <span class="m">#fff</span><span class="p">;</span>
+  <span class="py">--font-color</span><span class="p">:</span> <span class="m">#333</span><span class="p">;</span>
+  <span class="py">--font-color-l</span><span class="p">:</span> <span class="m">#000000</span><span class="p">;</span>
+  <span class="py">--nav-link-color</span><span class="p">:</span> <span class="nb">rgb</span><span class="p">(</span><span class="m">109</span><span class="p">,</span> <span class="m">109</span><span class="p">,</span> <span class="m">109</span><span class="p">);</span>
+  <span class="py">--article-color</span><span class="p">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0.8</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nd">:root</span><span class="o">[</span><span class="nt">color-theme</span><span class="o">=</span><span class="s1">"dark"</span><span class="o">]</span> <span class="p">{</span>
+  <span class="py">--background</span><span class="p">:</span> <span class="nb">rgb</span><span class="p">(</span><span class="m">13</span><span class="p">,</span> <span class="m">13</span><span class="p">,</span> <span class="m">14</span><span class="p">);</span>
+  <span class="py">--font-color</span><span class="p">:</span> <span class="m">#d2d2d2</span><span class="p">;</span>
+  <span class="py">--font-color-l</span><span class="p">:</span> <span class="m">#fff</span><span class="p">;</span>
+  <span class="py">--nav-link-color</span><span class="p">:</span> <span class="nb">rgb</span><span class="p">(</span><span class="m">186</span><span class="p">,</span> <span class="m">186</span><span class="p">,</span> <span class="m">186</span><span class="p">);</span>
+  <span class="py">--article-color</span><span class="p">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="p">,</span> <span class="m">255</span><span class="p">,</span> <span class="m">255</span><span class="p">,</span> <span class="m">0.8</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nt">body</span> <span class="p">{</span>
+  <span class="c">/* 변수를 통해 고정된 값이 사용자 지정 속성 활용 */</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--background</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h6 id="themescss-1">theme.scss</h6>
+
+<p>테마에 따라 변경되어야 하는 색상들의 경우 <code class="language-plaintext highlighter-rouge">color-theme</code> 속성의 값에 변수로 설정해놓았습니다. 이렇게 설정해 놓은 변수들은 <code class="language-plaintext highlighter-rouge">var(--변수명)</code>을 통해 개별 태그에서 사용해주시면 됩니다.</p>
+
+<hr />
+
+<h3 id="결과">결과</h3>
+
+<p><img src="/assets/images/posts/theme-change.gif" alt="theme-change" class="img-center" /></p>
+
+<p>앞서 말씀드린 것처럼 저는 테마 변경 시 고칠 부분이 많지 않아 간단하게 구현하였습니다. 별도의 CSS로 구현하는 방식은 아래 중 첫번쨰 링크 참조 부탁드립니다.</p>
+
+<hr />
+
+<h3 id="참고-자료">참고 자료</h3>
+
+<ol>
+  <li><a href="https://etch-cure.github.io/blog/toggle-dark-mode/">minimal-mistakes 테마 다크 모드 토글 적용 - Github Pages 운영</a></li>
+  <li><a href="https://wlqmffl0102.github.io/posts/Customizing-Blogs/">블로그 커스터마이징 하기</a></li>
+  <li><a href="https://edykim.com/ko/post/dark-mode/">웹페이지 다크 모드 지원하기</a></li>
+</ol>
+
+                <div class="clearfix"></div>
+			</div>
+
+            <!-- Post Date -->
+            <p>
+            <small>
+                <span class="post-date"><time class="post-date" datetime="2024-01-12">12 Jan 2024</time></span>           
+                
+                </small>
+            </p>
+        </div>
+
+        <div class="pt-4 pb-3">
+            <script>
+                // comment
+                let getTheme = localStorage.getItem("theme");
+                let theme = getTheme === 'dark' ? 'github-dark' : 'github-light';
+                let s = document.createElement('script');
+                s.src = 'https://utteranc.es/client.js';
+                s.setAttribute('repo', 'shm-m/shm-m.github.io');
+                s.setAttribute('issue-term', 'pathname');
+                s.setAttribute('theme', theme);
+                s.setAttribute('crossorigin', 'anonymous');
+                s.setAttribute('async', '');
+                document.body.appendChild(s);
+            </script>
+        </div>
+
+
+
+		
+
+<!-- End Article
+================================================== --></main>
+
+    <!-- Footer
+================================================== -->
+    <footer class="footer container text-center">
+      <div class="copyright small">
+        Copyright © shm-m. All rights reserved.
+      </div>
+    </footer>
+
+    <!-- JavaScript
+================================================== -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/change-theme.js"></script>
+    <script src="/assets/js/theme.js"></script>
+  </body>
+</html>

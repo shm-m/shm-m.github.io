@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>shm-m</title>
+    <description></description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 23 Jun 2024 13:53:19 +0000</pubDate>
+    <lastBuildDate>Sun, 23 Jun 2024 13:53:19 +0000</lastBuildDate>
+    <generator>Jekyll v4.3.3</generator>
+    
+      <item>
+        <title>GitHub Pages 다크 모드 수동 추가</title>
+        <description>&lt;p&gt;새해를 맞아 방치했던 블로그를 업데이트하고 싶어 아래와 같은 기능을 추가하기로 결심했습니다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;무한 스크롤 변경&lt;/li&gt;
+  &lt;li&gt;댓글 기능&lt;/li&gt;
+  &lt;li&gt;다크 모드&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;이 중 다크 모드 기능을 제일 먼저 구현하기로 결심했습니다. 사실 처음부터 다크 모드를 지원해주는 테마를 사용하면 될 일 ㅎ&lt;/p&gt;
+
+&lt;p&gt;해당 기능은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll&lt;/code&gt;을 사용하여 구현했습니다. 요새는 깃허브 페이지를 포스팅 용도로는 번거로워 잘 안쓰더라고요? 사용하시더라도 진작 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gatsby.js&lt;/code&gt;로 마이그하셨거나, 최근에는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Next.js&lt;/code&gt;로 구현하는 추세더군요.
+저도 언젠가는 후자의 방식으로 마이그레이션을 하고 싶습니다.. 언젠가..&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/opening.png&quot; alt=&quot;theme-change&quot; class=&quot;img-center&quot; /&gt;&lt;/p&gt;
+
+&lt;h6 id=&quot;아직-사람있다고요&quot;&gt;아직 사람있다고요&lt;/h6&gt;
+
+&lt;p&gt;각설하고 저처럼 다크모드 없는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll&lt;/code&gt; 테마를 받으셨다가 간단하게라도 만들어내고 싶으신 분들을 위해 해당 포스트를 작성합니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;nav-barheader에-테마-변경-switch-추가&quot;&gt;nav-bar(header)에 테마 변경 switch 추가&lt;/h3&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;collapse navbar-collapse&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;navbarResponsive&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;navbar-nav ml-auto d-flex align-items-center&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 메뉴 리스트 --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;nav-item&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 메뉴 리스트에 테마 변경 스위치 추가 --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;nav-item&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;theme-btn-wrap px-3&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;for=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;btn_change_theme&quot;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;checkbox&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;btn_change_theme&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&amp;lt;i&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;theme-btn&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/i&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h6 id=&quot;defaulthtml&quot;&gt;default.html&lt;/h6&gt;
+
+&lt;p&gt;헤더에 테마 변경용 스위치를 넣어줌. 푸터에 넣으실 분들은 원하시는 태그에 넣으시면 됩니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;/* 디폴트 상태 */&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;.theme-btn-wrap&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.theme-btn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inline-block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;18px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;18px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;sx&quot;&gt;url(&quot;/assets/images/moon.png&quot;)&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;left&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;center&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;no-repeat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;background-size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cover&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;vertical-align&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;middle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;transition-duration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.3s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;.theme-btn-wrap&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&quot;checkbox&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;none&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;/* 다크모드로 변경되었을 때 */&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;.theme-btn-wrap&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&quot;checkbox&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:checked&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.theme-btn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;background-image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;sx&quot;&gt;url(&quot;/assets/images/sun.png&quot;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;/* 스위치에 마우스 오버 시 효과 */&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;.theme-btn-wrap&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.theme-btn&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:hover&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;transition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;all&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1s&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ease-in-out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;scale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1.2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;rotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;180deg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h6 id=&quot;themescss&quot;&gt;theme.scss&lt;/h6&gt;
+
+&lt;p&gt;테마 변경 시 저처럼 아이콘을 바꿔 넣는 방식으로 구현하시는 분들도 있고, 토글로 구현하시는 분들도 계십니다. 둘 다 체크박스라는 점은 동일하니 편하신 방식으로 구현하면 됨.&lt;/p&gt;
+
+&lt;p&gt;미체크 상태는 디폴트(라이트 모드)로, 체크된 상태를 다크 모드 시의 아이콘으로 표시되게 해주었습니다. 추가로 그냥 아이콘만 변하는 건 심심해서 마우스 오버 시 회전 및 확대되도록 구현하였습니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;테마-변경용-script-작성&quot;&gt;테마 변경용 script 작성&lt;/h3&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 테마 변경에 따른 HTML 요소 속성값 변경&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;setDarkTheme&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isDark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isDark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;documentElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setAttribute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;color-theme&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;dark&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;documentElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setAttribute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;color-theme&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;light&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// 로컬스토리지 값에 사용자가 설정한 테마 저장&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;localStorage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;theme&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isDark&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;dark&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;currentTheme&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;localStorage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;theme&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isDark&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;currentTheme&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;isDark&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;currentTheme&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;dark&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;isDark&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;matchMedia&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;(prefers-color-scheme: dark)&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;matches&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 최초 진입 시, 사용자 OS 설정에 맞춤&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;setDarkTheme&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isDark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 토글을 통해서가 아닌 페이지 접속 시 실행할 부분&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;themeBtn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;btn_change_theme&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;themeBtn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;themeBtn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;checked&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isDark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// 스위치의 체크 여부를 통해 다크모드 여부 설정&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;changeTheme&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;setDarkTheme&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;checked&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;themeBtn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;changeTheme&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h6 id=&quot;change-themejs&quot;&gt;change-theme.js&lt;/h6&gt;
+
+&lt;p&gt;최초 진입했을 경우 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;prefers-color-scheme&lt;/code&gt;라는 미디어쿼리를 통해 사용자 OS에 적용된 테마를 가져오도록 구현하였고, 이후에는 로컬스토리지에 테마 값을 저장하여 불러오도록 하였습니다.&lt;/p&gt;
+
+&lt;p&gt;테마 변경 아이콘 클릭(즉, 체크됨) 시에는 다크모드 여부 플래그 값을 true로 변경하고,
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;color-theme&lt;/code&gt;이라는 HTML 요소 속성을 별도로 만들어 모드에 따라 해당 속성의 값을 바꾸어주었습니다.&lt;/p&gt;
+
+&lt;p&gt;제 블로그에서는 테마 변경 시 바뀌는 건 그래봤자 배경색, 폰트색 등 색상 위주고 그마저도 많지 않았습니다.
+그러나 보다 다양한 기능을 구현하고 싶으시면 저처럼 HTML 요소로 빼지 마시고, &lt;strong&gt;CSS 파일을 테마 별로 생성하여 조건문을 통해 바꾸시는 걸 추천드립니다. (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; 파일 작업 필요)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;테마에-따른-css-변경&quot;&gt;테마에 따른 CSS 변경&lt;/h3&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;:root&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;color-theme&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&quot;light&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;--background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#fff&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;--font-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#333&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;--font-color-l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;--nav-link-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;rgb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;109&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;109&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;109&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;--article-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rgba&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nd&quot;&gt;:root&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;color-theme&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&quot;dark&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;--background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;rgb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;13&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;13&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;14&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;--font-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#d2d2d2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;--font-color-l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#fff&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;--nav-link-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;rgb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;186&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;186&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;186&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;py&quot;&gt;--article-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rgba&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;255&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;255&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;255&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c&quot;&gt;/* 변수를 통해 고정된 값이 사용자 지정 속성 활용 */&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;--background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h6 id=&quot;themescss-1&quot;&gt;theme.scss&lt;/h6&gt;
+
+&lt;p&gt;테마에 따라 변경되어야 하는 색상들의 경우 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;color-theme&lt;/code&gt; 속성의 값에 변수로 설정해놓았습니다. 이렇게 설정해 놓은 변수들은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;var(--변수명)&lt;/code&gt;을 통해 개별 태그에서 사용해주시면 됩니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;결과&quot;&gt;결과&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/theme-change.gif&quot; alt=&quot;theme-change&quot; class=&quot;img-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;앞서 말씀드린 것처럼 저는 테마 변경 시 고칠 부분이 많지 않아 간단하게 구현하였습니다. 별도의 CSS로 구현하는 방식은 아래 중 첫번쨰 링크 참조 부탁드립니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;참고-자료&quot;&gt;참고 자료&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://etch-cure.github.io/blog/toggle-dark-mode/&quot;&gt;minimal-mistakes 테마 다크 모드 토글 적용 - Github Pages 운영&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wlqmffl0102.github.io/posts/Customizing-Blogs/&quot;&gt;블로그 커스터마이징 하기&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://edykim.com/ko/post/dark-mode/&quot;&gt;웹페이지 다크 모드 지원하기&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Fri, 12 Jan 2024 00:00:00 +0000</pubDate>
+        <link>http://localhost:4000/posts/dark-theme</link>
+        <guid isPermaLink="true">http://localhost:4000/posts/dark-theme</guid>
+        
+        
+        <category>github pages</category>
+        
+      </item>
+    
+      <item>
+        <title>2022&amp;2023</title>
+        <description>&lt;h3 id=&quot;2022-기록&quot;&gt;2022 기록&lt;/h3&gt;
+
+&lt;p&gt;개발자로서 쓸만한 것들이 조금 쌓인 2022년 정리.&lt;/p&gt;
+
+&lt;h4 id=&quot;기반-다지기와-취준&quot;&gt;기반 다지기와 취준&lt;/h4&gt;
+
+&lt;p&gt;5월 취업 이전까지는 개념 다지기를 주로 했습니다. 재작년 국비교육은 따라가기 급급했던지라 제대로 된 이해가 부족했었음. 인강을 사서 이해부터 시작했습니다. 거의 다 아는 정보겠지만 스프링 강의는 무조건 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;인프런 김영한 강의&lt;/code&gt;을 추천합니다. 덕분에 여전히 부족하지만 그래도 스프링 MVC 구조는 확실히 이해하고 넘어가게 되었습니다.&lt;/p&gt;
+
+&lt;p&gt;그리고 틈틈히 백준과 프로그래머스를 통해 작년에 비해 부족했던 코테 실력을 키우고자 노력했습니다.&lt;/p&gt;
+
+&lt;p&gt;이후 몇번의 탈락 끝에 솔루션 회사에 취직함.&lt;/p&gt;
+
+&lt;h4 id=&quot;취업과-수습프로젝트&quot;&gt;취업과 수습프로젝트&lt;/h4&gt;
+
+&lt;p&gt;5,6,7월은 취업을 시작으로 면수습 프로젝트를 하느라 정신없었습니다. 현재 소속된 팀은 세일즈포스 구축 및 SI 사업을 주로 하는 팀이었고, 취업하기 전부터 저를 비롯한 신입사원들은 금융 쪽 SI 프로젝트로 투입될 예정이었나 봅니다.&lt;/p&gt;
+
+&lt;p&gt;고객사 프로젝트 환경이 Vue.js를 통해 구축된 SPA였으므로 동기들과 함께 면수습 프로젝트로 Vue.js를 사용한 웹앱 구현을 받았었습니다. &lt;del&gt;자바도 모르는데 뷰요?&lt;/del&gt; 게다가 Apache Cordova를 통해 웹을 앱으로 변환하라는 과제까지 있었던지라 매일 머리를 쥐어뜯으며 살았습니다. 회사에서는 과제하고 집에서는 미친듯이 인강을 봤었습니다. (Vue.js와 TypeScript는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;코딩애플&lt;/code&gt;을 추천합니다.) 그래도 덕분에 AWS로 서버 및 DB 구축도 해보고 &lt;del&gt;(매일 과금될까봐 오들오들 떨면서 살음)&lt;/del&gt; 안드로이드 스튜디오도 깔짝 만져봤으니 다양한 경험을 한 것으로 만족합니다!&lt;/p&gt;
+
+&lt;h4 id=&quot;실무-시작&quot;&gt;실무 시작&lt;/h4&gt;
+
+&lt;p&gt;처음 맡게된, 그리고 현재까지 하고 있는 프로젝트는 **카드의 마이데이터 고도화 프로젝트였습니다. Vue.js를 사용한 SPA라 면수습 때 사용해본 경험이 있어 나쁘지 않겠다 했더니 TypeScript라는 복병과 백단은 Spring 기반의 모 회사 자체 프레임워크라 익숙해지는데 꽤나 고생을 했습니다. 또 환경구축 자체의 가이드라인이 없어서 팀원 전체가 힘들어했던 것이 기억에 남습니다. 1차 프로젝트에서 저는 주로 프론트엔드단을 맡았습니다. 어쩌다보니 메인 기능 위주로 작업을 많이 하였고, 덕분에 이슈도 많았지만 다양한 라이브러리를 사용할 수 있는 경험을 얻었습니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;2023-목표&quot;&gt;2023 목표&lt;/h3&gt;
+
+&lt;h4 id=&quot;오픈소스-기여하기&quot;&gt;오픈소스 기여하기&lt;/h4&gt;
+
+&lt;p&gt;작년과 재작년은 내가 너무 부족하다는 생각에 늘 개발자들이 스펙쌓기 류의 글에 가면 있는 오픈소스 기여하기는 생소하고 거부감이 들었습니다. 그러나 이번 해에는 짧은 코드 한줄이라도 써보든가, 아니면 구경에 그치더라도 깃허브에서 여러 오픈소스를 찾아보려고 함.&lt;/p&gt;
+
+&lt;h4 id=&quot;공부공부공부&quot;&gt;공부공부공부&lt;/h4&gt;
+
+&lt;p&gt;일을 핑계로 2022년 하반기에는 지나치게 공부를 안했습니다. 수습직원일떄는 잘릴까봐 울면서 인강들었는데 전생의 일 같습니다. 가끔 누가 CS 지식을 물어보면 바로 대답을 못해서 부끄러운 일이 종종 있음. 2023년에는 질러놓은 인강과 CS 지식을 좀 쌓으려고 합니다.&lt;/p&gt;
+
+&lt;p&gt;또한, 깃 공부도 제대로 해야한다는 생각이 들었습니다. 실무에서 프로젝트 단위로 브랜치를 따서 늘 커밋하는게 무서웠는데, 기계적으로 커밋 + 푸시하는 걸 떠나서 제대로 이해하고 깃을 다루는 사람이 되고 싶습니다.
+그리고 가장 중요한 것, 사용 프레임워크 공식 홈페이지 정독하기! 뷰 공식 홈페이지를 출퇴근 시간에 틈틈이 읽어보려고 합니다.&lt;/p&gt;
+
+&lt;h4 id=&quot;그리고&quot;&gt;그리고..&lt;/h4&gt;
+
+&lt;p&gt;2023년에는 일을 핑계로 자기계발을 게을리하지 않았으면 좋겠습니다. 개발자다운 개발자가 뭔지 이제 감은 오는데 실천하기가 여전히 어렵습니다. 그래도 계속 달려보려고 합니다. 화이팅!&lt;/p&gt;
+</description>
+        <pubDate>Tue, 03 Jan 2023 00:00:00 +0000</pubDate>
+        <link>http://localhost:4000/posts/retrospect-2022</link>
+        <guid isPermaLink="true">http://localhost:4000/posts/retrospect-2022</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>전역변수는 멤버변수와 같은 것일까?</title>
+        <description>&lt;h3 id=&quot;결과부터-말하자면-아님&quot;&gt;결과부터 말하자면 아님&lt;/h3&gt;
+
+&lt;p&gt;변수의 종류는 변수는 그 선언 위치에 따라 크게 멤버 변수와 지역변수로 나뉩니다.&lt;/p&gt;
+
+&lt;p&gt;이때 서치하면 많은 자료들이 멤버 변수는 클래스 영역에서 선언된 것으로, &lt;strong&gt;멤버 변수 = 필드 = 전역 변수&lt;/strong&gt;라고 언급하더라고요? 혹은 전역변수는 그게 아니고 static이 붙은 클래스 변수라고 주장. 근데 자바의 정석을 보니 또 클래스 변수에 접근제어자로 public을 붙여주면 전역 변수의 성격을 갖게 된다고 한다?&lt;/p&gt;
+
+&lt;p&gt;여기서 헷갈리기 시작~ 아니, 전역변수가 멤버 변수고 멤버 변수에 클래스 변수가 포함되는데, public을 붙여야지 전역 변수의 성격을 띄게 된다는 건 뭐지, 또 static을 붙이면 전역변수가 된다니 그럼 클래스 변수가 전역변수라는 얘기인가?&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;public-static-전역변수-각각의-개념&quot;&gt;public, static, 전역변수 각각의 개념&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;public&lt;/code&gt;은 같은 프로젝트 내이면 다른 패키지라도 호출 가능하게 하는 접근 제한자&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;static&lt;/code&gt;의 경우 클래스 변수를 만들어 별도의 인스턴스 없이 바로 호출 가능하게 하는 키워드&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;전역 변수(global variable)&lt;/code&gt; 는 함수의 외부에서 선언된 변수. 프로그램의 어디에서나 접근할 수 있으며, 프로그램이 종료되어야만 메모리에서 사라짐.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;여기서 프로그램 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;어디에서나&lt;/code&gt;라는 말이 애매하게 와닿았습니다. 어디에서나라는 건 프로젝트 내 모든 곳에서 접근 가능해야한다는 얘기인가 아니면 실행하는 하나의 큰 프로그램 단위를 의미하는건가.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;그래서 구글링해보니 다음과 같은 결과가 나옴&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/global-variable-1.PNG&quot; alt=&quot;no_global_variable&quot; /&gt;&lt;/p&gt;
+
+&lt;h6 id=&quot;자바에는-전역변수의-개념이-없다&quot;&gt;자바에는 전역변수의 개념이 없다&lt;/h6&gt;
+
+&lt;p&gt;&lt;strong&gt;애초에 자바에서는 전역변수를 지원하지 않는다는 것입니다.&lt;/strong&gt; 위에 나온 전역 변수의 정의도 사실 C언어의 것임.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;왜-자바에서는-전역-변수를-지원하지-않을까&quot;&gt;왜 자바에서는 전역 변수를 지원하지 않을까?&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;디자인적인 결함 때문.&lt;/strong&gt; 자바는 객체지향 프로그래밍 언어이고 이는 캡슐화를 통해 은닉성을 보장하는게 특징.
+전역변수는 해당 언어의 목적과 상반되는 개념입니다.&lt;/p&gt;
+
+&lt;p&gt;굳이 전역 변수의 역할을 수행하고 싶으면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;static&lt;/code&gt;이나 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;public&lt;/code&gt;으로 충분히 구현 가능(단 public 역시 은닉성을 해침으로 무분별한 사용 지양)&lt;/p&gt;
+
+&lt;h4 id=&quot;멤버변수-or-클래스-변수&quot;&gt;멤버변수 or 클래스 변수&lt;/h4&gt;
+
+&lt;p&gt;아무래도 지역변수와 구분지을 개념이 필요하다 보니 전역변수를 많이 사용하는 듯합니다. 멤버변수에 비해 비교하기도 쉬움.&lt;/p&gt;
+
+&lt;p&gt;그러나 자바에서는 전역변수를 제공하지도 않고 해당 개념을 사용하기엔 여전히 &lt;em&gt;프로그램 어디에서나&lt;/em&gt;라는 개념이 모호합니다. 따라서 지역변수와 분리되는 개념으로 사용할거면 전역변수라는 말보다 멤버변수 혹은 필드라는 용어를 사용하는 편이 좋을 듯 합니다.&lt;/p&gt;
+
+&lt;p&gt;혹은 모든 인스턴스가 공통된 변수를 공유하는 개념으로 실제 전역변수와 비슷한 용도로 사용할 거면 클래스변수(static)로 대체하는 것이 나을 듯함.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;참고-자료&quot;&gt;참고 자료&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.tcpschool.com/c/c_function_variableScope&quot;&gt;http://www.tcpschool.com/c/c_function_variableScope&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/5581234/why-are-there-no-global-variables-in-java/&quot;&gt;https://stackoverflow.com/questions/5581234/why-are-there-no-global-variables-in-java&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://coderanch.com/t/542041/certification/global-variables-Java&quot;&gt;https://coderanch.com/t/542041/certification/global-variables-Java&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Fri, 11 Mar 2022 00:00:00 +0000</pubDate>
+        <link>http://localhost:4000/posts/global_variable</link>
+        <guid isPermaLink="true">http://localhost:4000/posts/global_variable</guid>
+        
+        
+        <category>java</category>
+        
+      </item>
+    
+      <item>
+        <title>블로그 리뉴얼</title>
+        <description>&lt;p&gt;학원 수료 이후, 개발자는 기술 블로그가 필수라는 말에 부랴부랴 블로그를 생성하였습니다. 플랫폼에는 티스토리, 노션, 벨로그, 깃페이지가 선택지에 있었고, 디자인적인 측면에서는 노션이 가장 마음에 들었으나, 복잡한 url의 형식과 페이지를 개별적으로 생성한다는 점이 불만으로 작용, 벨로그는 디자인이 썩 마음에 들지 않는데 커스터마이징까지 불가능하다는 점에서 탈락,(티스토리는 그냥 끌리지 않았다) 결국 jekyll을 사용한 깃페이지를 활용하기로 결심했습니다.&lt;/p&gt;
+
+&lt;p&gt;커스터마이징이 자유롭다는 점에서 내가 테마를 생성했어도 되었으나, 나의 디자인 실력과 이상의 괴리가 크다는 점에서 기존에 존재하는 테마를 사용함.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/renewal-1.png&quot; alt=&quot;hydeout&quot; /&gt;&lt;/p&gt;
+
+&lt;h6 id=&quot;jekyll-theme--hydeout&quot;&gt;&lt;a href=&quot;https://github.com/fongandrew/hydeout&quot;&gt;jekyll theme | Hydeout&lt;/a&gt;&lt;/h6&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;위의 테마가 초기에 사용했던 테마입니다. 티스토리와 유사한 디자인이었고, 처음에는 마음에 들었으나 점점 보기 거슬려 결국 테마를 바꾸기로 결심하였습니다.&lt;/p&gt;
+
+&lt;p&gt;다만, 테마만 바꾼다는 것이 프로젝트와 블로그 포스팅을 구분 짓고, tag로 포스팅을 분류하는 것이 아닌 카테고리로 나누고 싶었기에 그냥 새로 만들기로 했습니다. (이때 introduction을 남긴다는 것이 멍청하게 삭제해서 다시 써야 했음)&lt;/p&gt;
+
+&lt;p&gt;처음 블로그를 만들 당시에 커스터마이징을 하는 것에 어려움을 겪어 그냥 새로 내가 만들까… 하다가 이번에는 마음에 드는 테마를 찾아 최대한 커스터마이징할 요소를 줄이자 마음먹고 고심해서 다음의 테마를 골랐습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/renewal-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h6 id=&quot;jekyll-theme--affiliates&quot;&gt;&lt;a href=&quot;https://github.com/wowthemesnet/affiliates-jekyll-theme&quot;&gt;jekyll theme | Affiliates&lt;/a&gt;&lt;/h6&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;그러나, 역시, 당연하게도 나는 커스터마이징을 이전보다 훨씬 많이 하게 된다&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;현재의 테마는 이미지 중심의 디자인이 마음에 들어 선택하였으나 역시나… 커스터마이징 삽질을 하였고 post-box 형식 이외의 모든 것을 바꿨습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/renewal-3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h6 id=&quot;기존의-것과-현재-커스터마이징한-indexhtml-비교&quot;&gt;기존의 것과 현재 커스터마이징한 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index.html&lt;/code&gt; 비교&lt;/h6&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;그래도 구글링 + 복붙의 향연이었던 과거와는 달리 이번에는 지킬 docs를 전반적으로 읽어나가고 jekyll directory 구조, liquid, 변수에 대한 이해를 기반으로 시작하여 수월한 편이었습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;기존-테마에서-추가-or-커스터마이징-한-기능&quot;&gt;기존 테마에서 추가 or 커스터마이징 한 기능&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;숫자 리스트 형식의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;paginatinate&lt;/code&gt; 기능 추가&lt;/li&gt;
+  &lt;li&gt;recent posts 형식의 블로그 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index.html&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;collection&lt;/code&gt;을 활용하여 project 파일 별도로 관리&lt;/li&gt;
+  &lt;li&gt;syntaxhighlighter&lt;/li&gt;
+  &lt;li&gt;기타(거의 모든..) UI&lt;/li&gt;
+  &lt;li&gt;활성 메뉴 표시 기능 (2월 26일 추가)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;특히 1번과 3번에 난항을 겪었고, 시간이 남는다면 미래의 나를 위해 jekyll 커스터마이징 관련 포스팅을 작성해볼까 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;참고-사이트&quot;&gt;참고 사이트&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;jekyll 공식 사이트&lt;/strong&gt; : &lt;a href=&quot;https://jekyllrb.com/docs/&quot;&gt;https://jekyllrb.com/docs/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://moon9342.github.io/jekyll-struct&quot;&gt;https://moon9342.github.io/jekyll-struct&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://ehfgk78.github.io&quot;&gt;https://ehfgk78.github.io&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://henriwoodcock.medium.com/how-to-create-a-projects-page-on-jekyll-3bcf129f3efd&quot;&gt;https://henriwoodcock.medium.com/how-to-create-a-projects-page-on-jekyll-3bcf129f3efd&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate>
+        <link>http://localhost:4000/posts/renewal-blog</link>
+        <guid isPermaLink="true">http://localhost:4000/posts/renewal-blog</guid>
+        
+        
+        <category>github pages</category>
+        
+      </item>
+    
+      <item>
+        <title>JAVA 정리 및 참고 자료</title>
+        <description>&lt;p&gt;이전 블로그에서는 자바 기초 개념을 일일이 개별 포스트로 작성했지만, 포스트 및 기타 카테고리가 많아지니 정신이 없었습니다. 따라서 TIL을 모두 깃허브 레포지토리에 정리하고 블로그에는 이와 함께 참고용 자료를 정리하는 것이 편하겠다고 판단함.&lt;/p&gt;
+
+&lt;h3 id=&quot;tiltoday-i-learned&quot;&gt;📖TIL(Today I Learned)&lt;/h3&gt;
+
+&lt;p&gt;&lt;em&gt;기존 기록물을 깃허브 마크다운 파일로 옮길 예정&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;명명 규칙&lt;/li&gt;
+  &lt;li&gt;변수와 상수&lt;/li&gt;
+  &lt;li&gt;데이터 타입&lt;/li&gt;
+  &lt;li&gt;형변환&lt;/li&gt;
+  &lt;li&gt;연산자&lt;/li&gt;
+  &lt;li&gt;입출력&lt;/li&gt;
+  &lt;li&gt;조건문과 반복문&lt;/li&gt;
+  &lt;li&gt;배열&lt;/li&gt;
+  &lt;li&gt;클래스와 객체지향프로그래밍&lt;/li&gt;
+  &lt;li&gt;변수와 메서드&lt;/li&gt;
+  &lt;li&gt;오버로딩&lt;/li&gt;
+  &lt;li&gt;생성자&lt;/li&gt;
+  &lt;li&gt;상속&lt;/li&gt;
+  &lt;li&gt;오버라이딩&lt;/li&gt;
+  &lt;li&gt;제어자&lt;/li&gt;
+  &lt;li&gt;다형성&lt;/li&gt;
+  &lt;li&gt;날짜&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;참고-자료&quot;&gt;참고 자료&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wikidocs.net/book/31&quot;&gt;점프 투 자바&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;기본적인 자바 이론 설명 wikidocs. 당연하게도 심화 내용이나 stack, queue와 같은 자료구조에 대한 내용은 x&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;자바의 정석 1,2&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;컬렉션이나 람다와 같은 중급 이상의 지식은 해당 서적 참고&lt;/p&gt;
+</description>
+        <pubDate>Fri, 28 Jan 2022 00:00:00 +0000</pubDate>
+        <link>http://localhost:4000/posts/java-studies</link>
+        <guid isPermaLink="true">http://localhost:4000/posts/java-studies</guid>
+        
+        
+        <category>java</category>
+        
+      </item>
+    
+      <item>
+        <title>짧은 2021 기록과 2022 목표</title>
+        <description>&lt;h3 id=&quot;2021-기록&quot;&gt;2021 기록&lt;/h3&gt;
+
+&lt;p&gt;2021년은 회고라고 하기엔 민망할 정도로 한게 없으므로 간단하게 기록이라 쓰고 짚고 넘어가려고 합니다.&lt;/p&gt;
+
+&lt;h4 id=&quot;개발자의-길로-들어서다&quot;&gt;개발자의 길로 들어서다&lt;/h4&gt;
+
+&lt;p&gt;종강을 끝으로, 바로 개발 학원에 등록했습니다. 마지막 학기 중에 간간히 진로 확인 차 공부했던 파이썬은 1학년 때처럼 여전히
+전공보다 재밌었기 때문이죠. 처음에는 그래도 건들여보았던 파이썬 위주의 과정을 살폈으나 취업에는 자바가 월등히 유용하다는 말에 비트캠프에서 자바 웹 개발자 과정을 등록했습니다.&lt;/p&gt;
+
+&lt;p&gt;6개월간 자바를 비롯하여 여러 언어와 프레임워크를 배우고 이를 토대로 쇼핑몰 구현 팀플도 진행했었습니다. 6개월이라는 시간은 당연하게도 학습한 모든 언어를 마스터할 수는 없음. 특히 스프링 강의에 들어서부터 많은 멘붕을 겪었습니다. 실무에 필요한 것만 빠르게 익히자 식이다 보니 이해보다 암기가 우선인 경우도 많았고요. 그러나 정신없는 만큼 즐겁기도 했었습니다. 자잘한 사건, 사고가 있었지만 결국에는 바니 프로젝트도 완성했고, 무사히 수료를 마쳤습니다. &lt;em&gt;조금 아쉬운 건 집에 돌아와서 복습만 하지말고 코딩테스트 대비도 할걸…&lt;/em&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;수료-이후&quot;&gt;수료 이후&lt;/h4&gt;
+
+&lt;p&gt;여전히 내가 부족하다는 생각이 우선이었습니다. 앞서 말했듯이 6개월 동안은 실무 중심의 학습이었고, 내 자신이 가진 지식이 마치 당장 무너져도 이상하지 않은 젠가 탑처럼 느껴졌습니다.&lt;/p&gt;
+
+&lt;p&gt;알고리즘을 본격적으로 학습하고 싶다는 생각에 이것저것 찾아보다 코딩테스트를 대비하기로 결정했습니다. 곧바로 코테 대비반 스터디를 결성, 코테를 준비하면서 간만에 왜 내가 코딩을 시작했는지를 다시 느낄 수 있었습니다. 오류만 안나게 해주세요..!의 기능 구현만 하다가 코테 문제를 푸니 여러 사람의 답안과 내 것을 비교하며 효율성에 집중할 수 있는 점이 좋았습니다.&lt;/p&gt;
+
+&lt;p&gt;그리고 SQLD 자격증을 취득함. 야호!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;2022-목표&quot;&gt;2022 목표&lt;/h3&gt;
+
+&lt;h4 id=&quot;적성-찾기&quot;&gt;적성 찾기&lt;/h4&gt;
+
+&lt;p&gt;풀스택을 지향하고 있지만 풀스택이라는 말은 전문성에 가까워질수록 어려운 일같다는 생각이 듭니다. &lt;em&gt;(실무에서도 두 분야 모두 마스터한 사람은 쉽게 볼 수 없는 유형이라고 했다)&lt;/em&gt;
+다만 백엔드든 프론트엔드든 한 분야에서 전문성을 갖추려면 그것만 파는게 답이 아니라 협업하는 분야에 대한 기본 지식이 필요한 것은 사실이고, 지금 내가 배우는 것은 아직 베이직한 단계이니 두 분야 모두 공부하는게 답은 맞는 듯합니다. 여전히 깊게
+들어가보지 않아 뭐가 더 재밌는지, 저와 맞는지를 모르니까요.&lt;/p&gt;
+
+&lt;h4 id=&quot;1일-1커밋&quot;&gt;1일 1커밋&lt;/h4&gt;
+
+&lt;p&gt;사실 커밋이 잔디 심기만을 위한 용도로 변질될까봐 걱정이 되지만… 성실성을 기르기 위해서 도전해보고자 합니다.&lt;/p&gt;
+
+&lt;h4 id=&quot;개인-프로젝트&quot;&gt;개인 프로젝트&lt;/h4&gt;
+
+&lt;p&gt;최소 개인프로젝트를 2개 이상은 진행해보려고 합니다. 지금 프로젝트 카테고리에 하나밖에 없는 게 민망하기도 하고… 그 중에서 하나를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AWS&lt;/code&gt;를 이용해 서버에 배포해 보려 합니다. 아직 개인 프로젝트는 새로운 소재로 구상할 지 기존에 진행했던 프로젝트를 활용할 지 고민 중입니다.&lt;/p&gt;
+
+&lt;h5 id=&quot;공부공부공부&quot;&gt;공부공부공부&lt;/h5&gt;
+
+&lt;p&gt;가장 시급한 것은 CS 지식이라고 생각합니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;운영체제&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HTTP&lt;/code&gt;를 내년 안에 학습 완료하는 것을 목표로 삼고 있다. 또 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;React&lt;/code&gt;를 배워볼까 합니다. 현 프론트엔드 시장에서는 필수로 요구하는 라이브러리기도 하고, 배우다 보면 적성 찾기에도 도움이 되지 않을까하는 생각입니다.&lt;/p&gt;
+
+&lt;p&gt;그리고 돌아서면 까먹기에 복습이 필요함. 21년에는 마크다운에도 익숙해질겸 TIL도 깃허브 기록을 생각 중입니다.&lt;/p&gt;
+
+&lt;h5 id=&quot;끝으로&quot;&gt;끝으로..&lt;/h5&gt;
+
+&lt;p&gt;‘비전공자라서’라고 변명하는 사람이 아니라 ‘비전공이지만’이라고 놀라움을 주는 개발자가 되고 싶습니다. 끊임없이 공부해야하는 분야에 발을 붙였으니 되는 데까지는 노력하고자 합니다. 2022년에는 회고록 다운 회고록을 쓰길 바라며, 화이팅!&lt;/p&gt;
+</description>
+        <pubDate>Wed, 22 Dec 2021 00:00:00 +0000</pubDate>
+        <link>http://localhost:4000/posts/goals-2022</link>
+        <guid isPermaLink="true">http://localhost:4000/posts/goals-2022</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>DTO와 VO, DAO와 mapper</title>
+        <description>&lt;p&gt;MVC 패턴을 기반으로한 프로젝트를 진행하면서, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Controller-Service-Mapper + VO&lt;/code&gt; 의 구조를 사용했었습니다. 그러나 종종 검색을 하면 VO 대신 DTO를, Mapper대신 DAO를 사용하는 사례가 있더라구요. 서로 대체가 가능하니 기본 기능은 유사한 것 같은데, 그래도 명확한 차이를 알고 싶어 따로 정리를 했습니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;dto-vs-vo&quot;&gt;DTO vs VO&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;DTO&lt;/strong&gt; : Data Transfer Object, 즉 데이터 전달 객체&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;VO&lt;/strong&gt; : Value Object, 즉 값 객체라는 의미이다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;교육 당시에는 DTO는 사용자가 혹은 데이터베이스가 보내주는 데이터를 객체로 가공하는 방향이 &lt;strong&gt;쌍방향&lt;/strong&gt;일때 주로 붙이고,
+VO는 데이터베이스가 보내는 데이터를 객체로 가공하는 &lt;strong&gt;단방향&lt;/strong&gt;일때 주로 붙이며, 그리 엄격하지 않으므로 둘다 모델 클래스 뒤에 붙여준다고 생각하면 된다고 배웠습니다.&lt;/p&gt;
+
+&lt;p&gt;그리고 사용자와 데이터베이스간의 쌍방향인 경우가 다수이기에 웬만해서는 DTO 붙이면 거의 맞다고 함.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;그러나 단순히 데이터 가공 방향의 차이만 존재 하나 싶어 조금 더 찾아보니 다음과 같은 차이점이 존재했습니다.&lt;/p&gt;
+
+&lt;p&gt;DTO의 경우 더 자세히 설명하면 데이터의 &lt;strong&gt;캡슐화&lt;/strong&gt;를 통해서 유연한 대처가 가능하며, 특정한 비즈니스 로직을 갖고 있지 않는 데이터 객체를 의미합니다. 따라서 데이터 접근 메서드(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;getter&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setter&lt;/code&gt;) 외의 기능은 가지지 않음.&lt;/p&gt;
+
+&lt;p&gt;VO는 값을 가지는 객체로서, 해당 값이 변하지 않음을 보장하기 때문에 코드의 안정성과 생산성을 높입니다. VO의 경우 값이 같을 경우에는 다른 이름을 가진 인스턴스라도 동일한 취급을 당하기 때문에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;equals()&lt;/code&gt; 와 각 객체의 주소값을 기반으로 하는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hashcode()&lt;/code&gt;를 오버라이딩 해서 인스턴스를 구분할 수 있게 해줘야 합니다. 또한 DTO와 다르게 VO는 특정 비즈니스 로직을 가질 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;즉 공통점과 차이점을 정리하면 다음과 같습니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;공통점 : 레이어 간 데이터를 전달할 때 사용 가능&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;차이점&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;DTO는 값이 변할 수 있으나 VO는 불가능&lt;/li&gt;
+      &lt;li&gt;DTO는 별도의 비즈니스 로직을 가질 수 없지만, VO는 가능&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;그럼-왜-vo를-dto처럼-사용하나&quot;&gt;그럼 왜 VO를 DTO처럼 사용하나?&lt;/h4&gt;
+
+&lt;p&gt;현업에서는 두 개념을 혼용해서 사용한다고 합니다. VO 역시 레이어간 데이터를 전송하기 위한 DTO의 역할을 수행하기 때문일 것 같습니다. 굳이 DTO 대신 VO라고 하는 이유는 데이터의 불변성이라는 VO의 특성 상 &lt;strong&gt;전송하는 데이터가 과정 중에서 변질되지 않음을 보장&lt;/strong&gt;할 수 있기 때문이겠지요.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;dao-vs-mapper&quot;&gt;DAO vs Mapper&lt;/h3&gt;
+
+&lt;p&gt;&lt;em&gt;위의 Mapper의 경우 XML 파일이 아닌 자바 클래스를 의미&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;DAO&lt;/strong&gt; : Data Access Object, 데이터 접근 객체&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Mapper.java&lt;/strong&gt; : Mapper 설정 파일(xml)에 있는 SQL 쿼리문을 호출하기 위한 인터페이스&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;DAO는 DB 에 접속하여 비즈니스 로직 실행에 필요한 쿼리를 호출하는 객체입니다. DAO는 보안성을 높이고 커넥션 관리를 효율적으로 하기 위해 사용됩니다.&lt;/p&gt;
+
+&lt;p&gt;DAO를 사용하기 위해서는 다음과 같은 작업이 필요합니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;applicationContext.xml&lt;/code&gt;에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mapper.xml&lt;/code&gt;의 위치를 설정해줘야 한다.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;context-mapper.xml&lt;/code&gt;에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sqlSession&lt;/code&gt;을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bean&lt;/code&gt;으로 추가해줘야 한다.&lt;/li&gt;
+  &lt;li&gt;DAO 인터페이스 이외의 인터페이스를 구현한 DAOImpl 클래스도 생성해야 함.&lt;/li&gt;
+  &lt;li&gt;namespace + “.” + SQL ID로 지정해서 SQL를 호출해야한다. 이 말은 Mapper 설정 파일(xml)에 있는 쿼리문의 ID를 String 형태로 지정해서 사용해야한다는 의미로 개발자가 직접 작성하는 탓에 오타가 발생할 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;sqlSession&lt;/strong&gt;은 개발자들이 DAO와 DB를 직접 연결 맺고 종료할 필요가 없게 해주며 기본적인 트랜잭션 관리나 쓰레드 처리의 안정성 등을 보장해준다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;br /&gt;
+DAO를 통해 데이터 객체에 직접 접근하면 안전성이 보장되지 않음. 따라서 MyBatis 3.0 이상부터는 Mapper 인터페이스를 지원합니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Mapper&lt;/code&gt; 어노테이션을 통해 인터페이스만 구현하고 ServiceImpl에서 바로 연결하여 사용할 수 있도록 함. 해당 방식은 쿼리문의 id를 직접 지정하지 않고 메소드 방식으로 사용하니 DAO와 달리 오타 방지가 가능하다는 장점이 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+정리하면 DAO를 통해 DB에 직접 접근하던 방식을 Mapper.java를 통해 Mabatis에서 대신 수행해 편리성이 증대되었다고 볼 수 있습니다. DTO &amp;amp; VO와는 달리 Mapper가 더 발전된 기능이나, 종종 실무에서는 DAO를 사용하기도 하기 때문에 사용법을 알아둘 필요가 있겠습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h3 id=&quot;참고-자료&quot;&gt;참고 자료&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=J_Dr6R0Ov8E&quot;&gt;https://www.youtube.com/watch?v=J_Dr6R0Ov8E&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://twofootdog.github.io/Spring-DAO%EC%99%80-Mapper%EC%9D%98-%EC%B0%A8%EC%9D%B4%EC%A0%90/&quot;&gt;https://twofootdog.github.io/Spring-DAO%EC%99%80-Mapper%EC%9D%98-%EC%B0%A8%EC%9D%B4%EC%A0%90/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://elvis-note.tistory.com/entry/9-Spring-MVC-3-DAO%EC%99%80-Mapper&quot;&gt;https://elvis-note.tistory.com/entry/9-Spring-MVC-3-DAO%EC%99%80-Mapper&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Thu, 16 Sep 2021 00:00:00 +0000</pubDate>
+        <link>http://localhost:4000/posts/DTO_VO</link>
+        <guid isPermaLink="true">http://localhost:4000/posts/DTO_VO</guid>
+        
+        
+        <category>spring</category>
+        
+      </item>
+    
+  </channel>
+</rss>

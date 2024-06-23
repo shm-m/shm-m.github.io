@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta
+      name="google-site-verification"
+      content="-urvg5tCmRoQr1Cod5VpXFLsjyTrsARYexvk82_z2Ag"
+    />
+    <link rel="icon" href="/assets/images/favicon.ico" />
+
+    <script>
+      localStorage.getItem("theme") === "dark"
+        ? document.documentElement.setAttribute("color-theme", "dark")
+        : document.documentElement.setAttribute("color-theme", "light");
+    </script>
+
+    
+    <title>DTO와 VO, DAO와 mapper | shm-m</title>
+     <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>DTO와 VO, DAO와 mapper | shm-m</title>
+<meta name="generator" content="Jekyll v4.3.3" />
+<meta property="og:title" content="DTO와 VO, DAO와 mapper" />
+<meta name="author" content="Sehee Moon" />
+<meta property="og:locale" content="en_us" />
+<meta name="description" content="MVC 패턴을 기반으로한 프로젝트를 진행하면서, Controller-Service-Mapper + VO 의 구조를 사용했었습니다. 그러나 종종 검색을 하면 VO 대신 DTO를, Mapper대신 DAO를 사용하는 사례가 있더라구요. 서로 대체가 가능하니 기본 기능은 유사한 것 같은데, 그래도 명확한 차이를 알고 싶어 따로 정리를 했습니다." />
+<meta property="og:description" content="MVC 패턴을 기반으로한 프로젝트를 진행하면서, Controller-Service-Mapper + VO 의 구조를 사용했었습니다. 그러나 종종 검색을 하면 VO 대신 DTO를, Mapper대신 DAO를 사용하는 사례가 있더라구요. 서로 대체가 가능하니 기본 기능은 유사한 것 같은데, 그래도 명확한 차이를 알고 싶어 따로 정리를 했습니다." />
+<link rel="canonical" href="http://localhost:4000/posts/DTO_VO" />
+<meta property="og:url" content="http://localhost:4000/posts/DTO_VO" />
+<meta property="og:site_name" content="shm-m" />
+<meta property="og:image" content="http://localhost:4000/assets/images/dto-vo.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-09-16T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="http://localhost:4000/assets/images/dto-vo.png" />
+<meta property="twitter:title" content="DTO와 VO, DAO와 mapper" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sehee Moon"},"dateModified":"2021-09-16T00:00:00+00:00","datePublished":"2021-09-16T00:00:00+00:00","description":"MVC 패턴을 기반으로한 프로젝트를 진행하면서, Controller-Service-Mapper + VO 의 구조를 사용했었습니다. 그러나 종종 검색을 하면 VO 대신 DTO를, Mapper대신 DAO를 사용하는 사례가 있더라구요. 서로 대체가 가능하니 기본 기능은 유사한 것 같은데, 그래도 명확한 차이를 알고 싶어 따로 정리를 했습니다.","headline":"DTO와 VO, DAO와 mapper","image":"http://localhost:4000/assets/images/dto-vo.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/DTO_VO"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"Sehee Moon"},"url":"http://localhost:4000/posts/DTO_VO"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link href="/assets/css/theme.css" rel="stylesheet" />
+
+    <!-- custom CSS - Remove this if you don't use it or choose to customize the stylesheet with sass-->
+    <link href="/assets/css/custom.css" rel="stylesheet" />
+
+    <!-- syntax -->
+    <link href="/assets/css/syntax.css" rel="stylesheet" />
+    <!-- custom CSS end-->
+    <!-- <link href="/assets/css/dark.css" rel="stylesheet" /> -->
+    
+
+    <!-- wow.js -->
+    <link rel="stylesheet" href="/assets/css/animate.css" />
+    <script src="/assets/js/wow.min.js"></script>
+    <script>
+      new WOW().init();
+    </script>
+  </head>
+
+  
+  <body class="layout-post">
+    <!-- Menu Navigation
+================================================== -->
+    <div class="navigation-wrap start-header start-style">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <!-- <a
+            class="navbar-brand font-weight-bold big d-flex align-items-center home-title"
+            href="/"
+          >
+            Sayhi
+          </a> -->
+
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarResponsive"
+            aria-controls="navbarResponsive"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="26"
+              height="26"
+              class="bi bi-three-dots-vertical"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"
+              />
+            </svg>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+               
+              
+              <li class="nav-item">
+                <a
+                  class="nav-link px-3  "
+                  href="/about"
+                  alt="ABOUT"
+                  >ABOUT</a
+                >
+              </li>
+               
+              
+              <li class="nav-item">
+                <a
+                  class="nav-link px-3  "
+                  href="/projects"
+                  alt="PROJECT"
+                  >PROJECT</a
+                >
+              </li>
+               
+              
+              <li class="nav-item">
+                <a
+                  class="nav-link px-3  active"
+                  href="/posts"
+                  alt="POST"
+                  >POST</a
+                >
+              </li>
+              
+              <li class="nav-item">
+                <label class="theme-btn-wrap px-3" for="btn_change_theme"
+                  ><input type="checkbox" id="btn_change_theme" /><i
+                    class="theme-btn"
+                  ></i
+                ></label>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Container
+================================================== -->
+    <div>
+      
+      <img
+        class="featured-image background-image"
+        src="/assets/images/dto-vo.png"
+        alt="DTO와 VO, DAO와 mapper"
+      />
+      
+    </div>
+    <main class="container"><!-- Begin Article
+================================================== -->
+       <div class="content mx-auto pb-5 px-xl-4">
+		<!-- Post -->        
+			<div class="mainheading pb-4">             
+                <!-- Post Categories -->
+                <div class="after-post-tags">
+                    <ul class="tags">
+                        
+                        
+                        <li>
+                         <a href="/categories#spring">spring</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <!-- End Categories -->
+                
+                <!-- Post Title -->
+				<h1 class="posttitle mb-3">DTO와 VO, DAO와 mapper</h2> 
+                
+			</div>
+
+			<!-- Post Content -->
+			<div class="article-post">
+				<p>MVC 패턴을 기반으로한 프로젝트를 진행하면서, <code class="language-plaintext highlighter-rouge">Controller-Service-Mapper + VO</code> 의 구조를 사용했었습니다. 그러나 종종 검색을 하면 VO 대신 DTO를, Mapper대신 DAO를 사용하는 사례가 있더라구요. 서로 대체가 가능하니 기본 기능은 유사한 것 같은데, 그래도 명확한 차이를 알고 싶어 따로 정리를 했습니다.</p>
+
+<h3 id="dto-vs-vo">DTO vs VO</h3>
+
+<ul>
+  <li><strong>DTO</strong> : Data Transfer Object, 즉 데이터 전달 객체</li>
+  <li><strong>VO</strong> : Value Object, 즉 값 객체라는 의미이다.</li>
+</ul>
+
+<p>교육 당시에는 DTO는 사용자가 혹은 데이터베이스가 보내주는 데이터를 객체로 가공하는 방향이 <strong>쌍방향</strong>일때 주로 붙이고,
+VO는 데이터베이스가 보내는 데이터를 객체로 가공하는 <strong>단방향</strong>일때 주로 붙이며, 그리 엄격하지 않으므로 둘다 모델 클래스 뒤에 붙여준다고 생각하면 된다고 배웠습니다.</p>
+
+<p>그리고 사용자와 데이터베이스간의 쌍방향인 경우가 다수이기에 웬만해서는 DTO 붙이면 거의 맞다고 함.</p>
+
+<p><br /></p>
+
+<p>그러나 단순히 데이터 가공 방향의 차이만 존재 하나 싶어 조금 더 찾아보니 다음과 같은 차이점이 존재했습니다.</p>
+
+<p>DTO의 경우 더 자세히 설명하면 데이터의 <strong>캡슐화</strong>를 통해서 유연한 대처가 가능하며, 특정한 비즈니스 로직을 갖고 있지 않는 데이터 객체를 의미합니다. 따라서 데이터 접근 메서드(<code class="language-plaintext highlighter-rouge">getter</code>, <code class="language-plaintext highlighter-rouge">setter</code>) 외의 기능은 가지지 않음.</p>
+
+<p>VO는 값을 가지는 객체로서, 해당 값이 변하지 않음을 보장하기 때문에 코드의 안정성과 생산성을 높입니다. VO의 경우 값이 같을 경우에는 다른 이름을 가진 인스턴스라도 동일한 취급을 당하기 때문에 <code class="language-plaintext highlighter-rouge">equals()</code> 와 각 객체의 주소값을 기반으로 하는 <code class="language-plaintext highlighter-rouge">hashcode()</code>를 오버라이딩 해서 인스턴스를 구분할 수 있게 해줘야 합니다. 또한 DTO와 다르게 VO는 특정 비즈니스 로직을 가질 수 있습니다.</p>
+
+<p>즉 공통점과 차이점을 정리하면 다음과 같습니다.</p>
+
+<ul>
+  <li>
+    <p>공통점 : 레이어 간 데이터를 전달할 때 사용 가능</p>
+  </li>
+  <li>
+    <p>차이점</p>
+    <ul>
+      <li>DTO는 값이 변할 수 있으나 VO는 불가능</li>
+      <li>DTO는 별도의 비즈니스 로직을 가질 수 없지만, VO는 가능</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="그럼-왜-vo를-dto처럼-사용하나">그럼 왜 VO를 DTO처럼 사용하나?</h4>
+
+<p>현업에서는 두 개념을 혼용해서 사용한다고 합니다. VO 역시 레이어간 데이터를 전송하기 위한 DTO의 역할을 수행하기 때문일 것 같습니다. 굳이 DTO 대신 VO라고 하는 이유는 데이터의 불변성이라는 VO의 특성 상 <strong>전송하는 데이터가 과정 중에서 변질되지 않음을 보장</strong>할 수 있기 때문이겠지요.</p>
+
+<p><br /></p>
+
+<hr />
+
+<h3 id="dao-vs-mapper">DAO vs Mapper</h3>
+
+<p><em>위의 Mapper의 경우 XML 파일이 아닌 자바 클래스를 의미</em></p>
+
+<ul>
+  <li><strong>DAO</strong> : Data Access Object, 데이터 접근 객체</li>
+  <li><strong>Mapper.java</strong> : Mapper 설정 파일(xml)에 있는 SQL 쿼리문을 호출하기 위한 인터페이스</li>
+</ul>
+
+<p>DAO는 DB 에 접속하여 비즈니스 로직 실행에 필요한 쿼리를 호출하는 객체입니다. DAO는 보안성을 높이고 커넥션 관리를 효율적으로 하기 위해 사용됩니다.</p>
+
+<p>DAO를 사용하기 위해서는 다음과 같은 작업이 필요합니다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">applicationContext.xml</code>에 <code class="language-plaintext highlighter-rouge">mapper.xml</code>의 위치를 설정해줘야 한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">context-mapper.xml</code>에 <code class="language-plaintext highlighter-rouge">sqlSession</code>을 <code class="language-plaintext highlighter-rouge">bean</code>으로 추가해줘야 한다.</li>
+  <li>DAO 인터페이스 이외의 인터페이스를 구현한 DAOImpl 클래스도 생성해야 함.</li>
+  <li>namespace + “.” + SQL ID로 지정해서 SQL를 호출해야한다. 이 말은 Mapper 설정 파일(xml)에 있는 쿼리문의 ID를 String 형태로 지정해서 사용해야한다는 의미로 개발자가 직접 작성하는 탓에 오타가 발생할 수 있다.</li>
+</ul>
+
+<blockquote>
+  <p><strong>sqlSession</strong>은 개발자들이 DAO와 DB를 직접 연결 맺고 종료할 필요가 없게 해주며 기본적인 트랜잭션 관리나 쓰레드 처리의 안정성 등을 보장해준다.</p>
+</blockquote>
+
+<p><br />
+DAO를 통해 데이터 객체에 직접 접근하면 안전성이 보장되지 않음. 따라서 MyBatis 3.0 이상부터는 Mapper 인터페이스를 지원합니다. <code class="language-plaintext highlighter-rouge">@Mapper</code> 어노테이션을 통해 인터페이스만 구현하고 ServiceImpl에서 바로 연결하여 사용할 수 있도록 함. 해당 방식은 쿼리문의 id를 직접 지정하지 않고 메소드 방식으로 사용하니 DAO와 달리 오타 방지가 가능하다는 장점이 있습니다.</p>
+
+<p><br />
+정리하면 DAO를 통해 DB에 직접 접근하던 방식을 Mapper.java를 통해 Mabatis에서 대신 수행해 편리성이 증대되었다고 볼 수 있습니다. DTO &amp; VO와는 달리 Mapper가 더 발전된 기능이나, 종종 실무에서는 DAO를 사용하기도 하기 때문에 사용법을 알아둘 필요가 있겠습니다.</p>
+
+<p><br /></p>
+<h3 id="참고-자료">참고 자료</h3>
+<ol>
+  <li><a href="https://www.youtube.com/watch?v=J_Dr6R0Ov8E">https://www.youtube.com/watch?v=J_Dr6R0Ov8E</a></li>
+  <li><a href="https://twofootdog.github.io/Spring-DAO%EC%99%80-Mapper%EC%9D%98-%EC%B0%A8%EC%9D%B4%EC%A0%90/">https://twofootdog.github.io/Spring-DAO%EC%99%80-Mapper%EC%9D%98-%EC%B0%A8%EC%9D%B4%EC%A0%90/</a></li>
+  <li><a href="https://elvis-note.tistory.com/entry/9-Spring-MVC-3-DAO%EC%99%80-Mapper">https://elvis-note.tistory.com/entry/9-Spring-MVC-3-DAO%EC%99%80-Mapper</a></li>
+</ol>
+
+                <div class="clearfix"></div>
+			</div>
+
+            <!-- Post Date -->
+            <p>
+            <small>
+                <span class="post-date"><time class="post-date" datetime="2021-09-16">16 Sep 2021</time></span>           
+                
+                </small>
+            </p>
+        </div>
+
+        <div class="pt-4 pb-3">
+            <script>
+                // comment
+                let getTheme = localStorage.getItem("theme");
+                let theme = getTheme === 'dark' ? 'github-dark' : 'github-light';
+                let s = document.createElement('script');
+                s.src = 'https://utteranc.es/client.js';
+                s.setAttribute('repo', 'shm-m/shm-m.github.io');
+                s.setAttribute('issue-term', 'pathname');
+                s.setAttribute('theme', theme);
+                s.setAttribute('crossorigin', 'anonymous');
+                s.setAttribute('async', '');
+                document.body.appendChild(s);
+            </script>
+        </div>
+
+
+
+		
+
+<!-- End Article
+================================================== --></main>
+
+    <!-- Footer
+================================================== -->
+    <footer class="footer container text-center">
+      <div class="copyright small">
+        Copyright © shm-m. All rights reserved.
+      </div>
+    </footer>
+
+    <!-- JavaScript
+================================================== -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/change-theme.js"></script>
+    <script src="/assets/js/theme.js"></script>
+  </body>
+</html>

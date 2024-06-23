@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta
+      name="google-site-verification"
+      content="-urvg5tCmRoQr1Cod5VpXFLsjyTrsARYexvk82_z2Ag"
+    />
+    <link rel="icon" href="/assets/images/favicon.ico" />
+
+    <script>
+      localStorage.getItem("theme") === "dark"
+        ? document.documentElement.setAttribute("color-theme", "dark")
+        : document.documentElement.setAttribute("color-theme", "light");
+    </script>
+
+    
+    <title>JAVA 정리 및 참고 자료 | shm-m</title>
+     <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>JAVA 정리 및 참고 자료 | shm-m</title>
+<meta name="generator" content="Jekyll v4.3.3" />
+<meta property="og:title" content="JAVA 정리 및 참고 자료" />
+<meta name="author" content="Sehee Moon" />
+<meta property="og:locale" content="en_us" />
+<meta name="description" content="이전 블로그에서는 자바 기초 개념을 일일이 개별 포스트로 작성했지만, 포스트 및 기타 카테고리가 많아지니 정신이 없었습니다. 따라서 TIL을 모두 깃허브 레포지토리에 정리하고 블로그에는 이와 함께 참고용 자료를 정리하는 것이 편하겠다고 판단함." />
+<meta property="og:description" content="이전 블로그에서는 자바 기초 개념을 일일이 개별 포스트로 작성했지만, 포스트 및 기타 카테고리가 많아지니 정신이 없었습니다. 따라서 TIL을 모두 깃허브 레포지토리에 정리하고 블로그에는 이와 함께 참고용 자료를 정리하는 것이 편하겠다고 판단함." />
+<link rel="canonical" href="http://localhost:4000/posts/java-studies" />
+<meta property="og:url" content="http://localhost:4000/posts/java-studies" />
+<meta property="og:site_name" content="shm-m" />
+<meta property="og:image" content="http://localhost:4000/assets/images/java-thumb.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-01-28T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="http://localhost:4000/assets/images/java-thumb.png" />
+<meta property="twitter:title" content="JAVA 정리 및 참고 자료" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sehee Moon"},"dateModified":"2022-01-28T00:00:00+00:00","datePublished":"2022-01-28T00:00:00+00:00","description":"이전 블로그에서는 자바 기초 개념을 일일이 개별 포스트로 작성했지만, 포스트 및 기타 카테고리가 많아지니 정신이 없었습니다. 따라서 TIL을 모두 깃허브 레포지토리에 정리하고 블로그에는 이와 함께 참고용 자료를 정리하는 것이 편하겠다고 판단함.","headline":"JAVA 정리 및 참고 자료","image":"http://localhost:4000/assets/images/java-thumb.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/java-studies"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"Sehee Moon"},"url":"http://localhost:4000/posts/java-studies"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link href="/assets/css/theme.css" rel="stylesheet" />
+
+    <!-- custom CSS - Remove this if you don't use it or choose to customize the stylesheet with sass-->
+    <link href="/assets/css/custom.css" rel="stylesheet" />
+
+    <!-- syntax -->
+    <link href="/assets/css/syntax.css" rel="stylesheet" />
+    <!-- custom CSS end-->
+    <!-- <link href="/assets/css/dark.css" rel="stylesheet" /> -->
+    
+
+    <!-- wow.js -->
+    <link rel="stylesheet" href="/assets/css/animate.css" />
+    <script src="/assets/js/wow.min.js"></script>
+    <script>
+      new WOW().init();
+    </script>
+  </head>
+
+  
+  <body class="layout-post">
+    <!-- Menu Navigation
+================================================== -->
+    <div class="navigation-wrap start-header start-style">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <!-- <a
+            class="navbar-brand font-weight-bold big d-flex align-items-center home-title"
+            href="/"
+          >
+            Sayhi
+          </a> -->
+
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarResponsive"
+            aria-controls="navbarResponsive"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="26"
+              height="26"
+              class="bi bi-three-dots-vertical"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"
+              />
+            </svg>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+               
+              
+              <li class="nav-item">
+                <a
+                  class="nav-link px-3  "
+                  href="/about"
+                  alt="ABOUT"
+                  >ABOUT</a
+                >
+              </li>
+               
+              
+              <li class="nav-item">
+                <a
+                  class="nav-link px-3  "
+                  href="/projects"
+                  alt="PROJECT"
+                  >PROJECT</a
+                >
+              </li>
+               
+              
+              <li class="nav-item">
+                <a
+                  class="nav-link px-3  active"
+                  href="/posts"
+                  alt="POST"
+                  >POST</a
+                >
+              </li>
+              
+              <li class="nav-item">
+                <label class="theme-btn-wrap px-3" for="btn_change_theme"
+                  ><input type="checkbox" id="btn_change_theme" /><i
+                    class="theme-btn"
+                  ></i
+                ></label>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Container
+================================================== -->
+    <div>
+      
+      <img
+        class="featured-image background-image"
+        src="/assets/images/java-thumb.png"
+        alt="JAVA 정리 및 참고 자료"
+      />
+      
+    </div>
+    <main class="container"><!-- Begin Article
+================================================== -->
+       <div class="content mx-auto pb-5 px-xl-4">
+		<!-- Post -->        
+			<div class="mainheading pb-4">             
+                <!-- Post Categories -->
+                <div class="after-post-tags">
+                    <ul class="tags">
+                        
+                        
+                        <li>
+                         <a href="/categories#java">java</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <!-- End Categories -->
+                
+                <!-- Post Title -->
+				<h1 class="posttitle mb-3">JAVA 정리 및 참고 자료</h2> 
+                
+			</div>
+
+			<!-- Post Content -->
+			<div class="article-post">
+				<p>이전 블로그에서는 자바 기초 개념을 일일이 개별 포스트로 작성했지만, 포스트 및 기타 카테고리가 많아지니 정신이 없었습니다. 따라서 TIL을 모두 깃허브 레포지토리에 정리하고 블로그에는 이와 함께 참고용 자료를 정리하는 것이 편하겠다고 판단함.</p>
+
+<h3 id="tiltoday-i-learned">📖TIL(Today I Learned)</h3>
+
+<p><em>기존 기록물을 깃허브 마크다운 파일로 옮길 예정</em></p>
+
+<ul>
+  <li>명명 규칙</li>
+  <li>변수와 상수</li>
+  <li>데이터 타입</li>
+  <li>형변환</li>
+  <li>연산자</li>
+  <li>입출력</li>
+  <li>조건문과 반복문</li>
+  <li>배열</li>
+  <li>클래스와 객체지향프로그래밍</li>
+  <li>변수와 메서드</li>
+  <li>오버로딩</li>
+  <li>생성자</li>
+  <li>상속</li>
+  <li>오버라이딩</li>
+  <li>제어자</li>
+  <li>다형성</li>
+  <li>날짜</li>
+</ul>
+
+<h3 id="참고-자료">참고 자료</h3>
+
+<ul>
+  <li><a href="https://wikidocs.net/book/31">점프 투 자바</a></li>
+</ul>
+
+<p>기본적인 자바 이론 설명 wikidocs. 당연하게도 심화 내용이나 stack, queue와 같은 자료구조에 대한 내용은 x</p>
+
+<ul>
+  <li>자바의 정석 1,2</li>
+</ul>
+
+<p>컬렉션이나 람다와 같은 중급 이상의 지식은 해당 서적 참고</p>
+
+                <div class="clearfix"></div>
+			</div>
+
+            <!-- Post Date -->
+            <p>
+            <small>
+                <span class="post-date"><time class="post-date" datetime="2022-01-28">28 Jan 2022</time></span>           
+                
+                </small>
+            </p>
+        </div>
+
+        <div class="pt-4 pb-3">
+            <script>
+                // comment
+                let getTheme = localStorage.getItem("theme");
+                let theme = getTheme === 'dark' ? 'github-dark' : 'github-light';
+                let s = document.createElement('script');
+                s.src = 'https://utteranc.es/client.js';
+                s.setAttribute('repo', 'shm-m/shm-m.github.io');
+                s.setAttribute('issue-term', 'pathname');
+                s.setAttribute('theme', theme);
+                s.setAttribute('crossorigin', 'anonymous');
+                s.setAttribute('async', '');
+                document.body.appendChild(s);
+            </script>
+        </div>
+
+
+
+		
+
+<!-- End Article
+================================================== --></main>
+
+    <!-- Footer
+================================================== -->
+    <footer class="footer container text-center">
+      <div class="copyright small">
+        Copyright © shm-m. All rights reserved.
+      </div>
+    </footer>
+
+    <!-- JavaScript
+================================================== -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/change-theme.js"></script>
+    <script src="/assets/js/theme.js"></script>
+  </body>
+</html>

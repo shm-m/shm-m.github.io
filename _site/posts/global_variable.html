@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta
+      name="google-site-verification"
+      content="-urvg5tCmRoQr1Cod5VpXFLsjyTrsARYexvk82_z2Ag"
+    />
+    <link rel="icon" href="/assets/images/favicon.ico" />
+
+    <script>
+      localStorage.getItem("theme") === "dark"
+        ? document.documentElement.setAttribute("color-theme", "dark")
+        : document.documentElement.setAttribute("color-theme", "light");
+    </script>
+
+    
+    <title>전역변수는 멤버변수와 같은 것일까? | shm-m</title>
+     <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>전역변수는 멤버변수와 같은 것일까? | shm-m</title>
+<meta name="generator" content="Jekyll v4.3.3" />
+<meta property="og:title" content="전역변수는 멤버변수와 같은 것일까?" />
+<meta name="author" content="Sehee Moon" />
+<meta property="og:locale" content="en_us" />
+<meta name="description" content="결과부터 말하자면 아님" />
+<meta property="og:description" content="결과부터 말하자면 아님" />
+<link rel="canonical" href="http://localhost:4000/posts/global_variable" />
+<meta property="og:url" content="http://localhost:4000/posts/global_variable" />
+<meta property="og:site_name" content="shm-m" />
+<meta property="og:image" content="http://localhost:4000/assets/images/global-variable.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-03-11T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="http://localhost:4000/assets/images/global-variable.webp" />
+<meta property="twitter:title" content="전역변수는 멤버변수와 같은 것일까?" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sehee Moon"},"dateModified":"2022-03-11T00:00:00+00:00","datePublished":"2022-03-11T00:00:00+00:00","description":"결과부터 말하자면 아님","headline":"전역변수는 멤버변수와 같은 것일까?","image":"http://localhost:4000/assets/images/global-variable.webp","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/global_variable"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"Sehee Moon"},"url":"http://localhost:4000/posts/global_variable"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link href="/assets/css/theme.css" rel="stylesheet" />
+
+    <!-- custom CSS - Remove this if you don't use it or choose to customize the stylesheet with sass-->
+    <link href="/assets/css/custom.css" rel="stylesheet" />
+
+    <!-- syntax -->
+    <link href="/assets/css/syntax.css" rel="stylesheet" />
+    <!-- custom CSS end-->
+    <!-- <link href="/assets/css/dark.css" rel="stylesheet" /> -->
+    
+
+    <!-- wow.js -->
+    <link rel="stylesheet" href="/assets/css/animate.css" />
+    <script src="/assets/js/wow.min.js"></script>
+    <script>
+      new WOW().init();
+    </script>
+  </head>
+
+  
+  <body class="layout-post">
+    <!-- Menu Navigation
+================================================== -->
+    <div class="navigation-wrap start-header start-style">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <!-- <a
+            class="navbar-brand font-weight-bold big d-flex align-items-center home-title"
+            href="/"
+          >
+            Sayhi
+          </a> -->
+
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarResponsive"
+            aria-controls="navbarResponsive"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="26"
+              height="26"
+              class="bi bi-three-dots-vertical"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"
+              />
+            </svg>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+               
+              
+              <li class="nav-item">
+                <a
+                  class="nav-link px-3  "
+                  href="/about"
+                  alt="ABOUT"
+                  >ABOUT</a
+                >
+              </li>
+               
+              
+              <li class="nav-item">
+                <a
+                  class="nav-link px-3  "
+                  href="/projects"
+                  alt="PROJECT"
+                  >PROJECT</a
+                >
+              </li>
+               
+              
+              <li class="nav-item">
+                <a
+                  class="nav-link px-3  active"
+                  href="/posts"
+                  alt="POST"
+                  >POST</a
+                >
+              </li>
+              
+              <li class="nav-item">
+                <label class="theme-btn-wrap px-3" for="btn_change_theme"
+                  ><input type="checkbox" id="btn_change_theme" /><i
+                    class="theme-btn"
+                  ></i
+                ></label>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Container
+================================================== -->
+    <div>
+      
+      <img
+        class="featured-image background-image"
+        src="/assets/images/global-variable.webp"
+        alt="전역변수는 멤버변수와 같은 것일까?"
+      />
+      
+    </div>
+    <main class="container"><!-- Begin Article
+================================================== -->
+       <div class="content mx-auto pb-5 px-xl-4">
+		<!-- Post -->        
+			<div class="mainheading pb-4">             
+                <!-- Post Categories -->
+                <div class="after-post-tags">
+                    <ul class="tags">
+                        
+                        
+                        <li>
+                         <a href="/categories#java">java</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <!-- End Categories -->
+                
+                <!-- Post Title -->
+				<h1 class="posttitle mb-3">전역변수는 멤버변수와 같은 것일까?</h2> 
+                
+			</div>
+
+			<!-- Post Content -->
+			<div class="article-post">
+				<h3 id="결과부터-말하자면-아님">결과부터 말하자면 아님</h3>
+
+<p>변수의 종류는 변수는 그 선언 위치에 따라 크게 멤버 변수와 지역변수로 나뉩니다.</p>
+
+<p>이때 서치하면 많은 자료들이 멤버 변수는 클래스 영역에서 선언된 것으로, <strong>멤버 변수 = 필드 = 전역 변수</strong>라고 언급하더라고요? 혹은 전역변수는 그게 아니고 static이 붙은 클래스 변수라고 주장. 근데 자바의 정석을 보니 또 클래스 변수에 접근제어자로 public을 붙여주면 전역 변수의 성격을 갖게 된다고 한다?</p>
+
+<p>여기서 헷갈리기 시작~ 아니, 전역변수가 멤버 변수고 멤버 변수에 클래스 변수가 포함되는데, public을 붙여야지 전역 변수의 성격을 띄게 된다는 건 뭐지, 또 static을 붙이면 전역변수가 된다니 그럼 클래스 변수가 전역변수라는 얘기인가?</p>
+
+<p><br /></p>
+
+<h3 id="public-static-전역변수-각각의-개념">public, static, 전역변수 각각의 개념</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">public</code>은 같은 프로젝트 내이면 다른 패키지라도 호출 가능하게 하는 접근 제한자</li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">static</code>의 경우 클래스 변수를 만들어 별도의 인스턴스 없이 바로 호출 가능하게 하는 키워드</p>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">전역 변수(global variable)</code> 는 함수의 외부에서 선언된 변수. 프로그램의 어디에서나 접근할 수 있으며, 프로그램이 종료되어야만 메모리에서 사라짐.</li>
+</ul>
+
+<p>여기서 프로그램 <code class="language-plaintext highlighter-rouge">어디에서나</code>라는 말이 애매하게 와닿았습니다. 어디에서나라는 건 프로젝트 내 모든 곳에서 접근 가능해야한다는 얘기인가 아니면 실행하는 하나의 큰 프로그램 단위를 의미하는건가.</p>
+
+<p><br /></p>
+
+<p>그래서 구글링해보니 다음과 같은 결과가 나옴</p>
+
+<p><img src="/assets/images/posts/global-variable-1.PNG" alt="no_global_variable" /></p>
+
+<h6 id="자바에는-전역변수의-개념이-없다">자바에는 전역변수의 개념이 없다</h6>
+
+<p><strong>애초에 자바에서는 전역변수를 지원하지 않는다는 것입니다.</strong> 위에 나온 전역 변수의 정의도 사실 C언어의 것임.</p>
+
+<p><br /></p>
+
+<h3 id="왜-자바에서는-전역-변수를-지원하지-않을까">왜 자바에서는 전역 변수를 지원하지 않을까?</h3>
+
+<p><strong>디자인적인 결함 때문.</strong> 자바는 객체지향 프로그래밍 언어이고 이는 캡슐화를 통해 은닉성을 보장하는게 특징.
+전역변수는 해당 언어의 목적과 상반되는 개념입니다.</p>
+
+<p>굳이 전역 변수의 역할을 수행하고 싶으면 <code class="language-plaintext highlighter-rouge">static</code>이나 <code class="language-plaintext highlighter-rouge">public</code>으로 충분히 구현 가능(단 public 역시 은닉성을 해침으로 무분별한 사용 지양)</p>
+
+<h4 id="멤버변수-or-클래스-변수">멤버변수 or 클래스 변수</h4>
+
+<p>아무래도 지역변수와 구분지을 개념이 필요하다 보니 전역변수를 많이 사용하는 듯합니다. 멤버변수에 비해 비교하기도 쉬움.</p>
+
+<p>그러나 자바에서는 전역변수를 제공하지도 않고 해당 개념을 사용하기엔 여전히 <em>프로그램 어디에서나</em>라는 개념이 모호합니다. 따라서 지역변수와 분리되는 개념으로 사용할거면 전역변수라는 말보다 멤버변수 혹은 필드라는 용어를 사용하는 편이 좋을 듯 합니다.</p>
+
+<p>혹은 모든 인스턴스가 공통된 변수를 공유하는 개념으로 실제 전역변수와 비슷한 용도로 사용할 거면 클래스변수(static)로 대체하는 것이 나을 듯함.</p>
+
+<p><br /></p>
+
+<h3 id="참고-자료">참고 자료</h3>
+
+<ol>
+  <li><a href="http://www.tcpschool.com/c/c_function_variableScope">http://www.tcpschool.com/c/c_function_variableScope</a></li>
+  <li><a href="https://stackoverflow.com/questions/5581234/why-are-there-no-global-variables-in-java/">https://stackoverflow.com/questions/5581234/why-are-there-no-global-variables-in-java</a></li>
+  <li><a href="https://coderanch.com/t/542041/certification/global-variables-Java">https://coderanch.com/t/542041/certification/global-variables-Java</a></li>
+</ol>
+
+                <div class="clearfix"></div>
+			</div>
+
+            <!-- Post Date -->
+            <p>
+            <small>
+                <span class="post-date"><time class="post-date" datetime="2022-03-11">11 Mar 2022</time></span>           
+                
+                </small>
+            </p>
+        </div>
+
+        <div class="pt-4 pb-3">
+            <script>
+                // comment
+                let getTheme = localStorage.getItem("theme");
+                let theme = getTheme === 'dark' ? 'github-dark' : 'github-light';
+                let s = document.createElement('script');
+                s.src = 'https://utteranc.es/client.js';
+                s.setAttribute('repo', 'shm-m/shm-m.github.io');
+                s.setAttribute('issue-term', 'pathname');
+                s.setAttribute('theme', theme);
+                s.setAttribute('crossorigin', 'anonymous');
+                s.setAttribute('async', '');
+                document.body.appendChild(s);
+            </script>
+        </div>
+
+
+
+		
+
+<!-- End Article
+================================================== --></main>
+
+    <!-- Footer
+================================================== -->
+    <footer class="footer container text-center">
+      <div class="copyright small">
+        Copyright © shm-m. All rights reserved.
+      </div>
+    </footer>
+
+    <!-- JavaScript
+================================================== -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/change-theme.js"></script>
+    <script src="/assets/js/theme.js"></script>
+  </body>
+</html>
